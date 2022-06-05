@@ -14,7 +14,7 @@ onready var animation_player = $AnimationPlayer
 onready var shoot_timer = $ShootAnimation
 onready var sprite = $Sprite
 onready var sound_jump = $Jump
-onready var gun = sprite.get_node(@"Gun")
+onready var gun = sprite.get_node(@"BlockPlacement")
 
 
 func _ready():
@@ -82,7 +82,7 @@ func _physics_process(_delta):
 	# creating new variables.
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
-		is_shooting = gun.shoot(sprite.scale.x)
+		is_shooting = gun.place(sprite.scale.x)
 
 	var animation = get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():

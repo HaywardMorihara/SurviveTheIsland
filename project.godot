@@ -14,25 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Actors/Actor.gd"
 }, {
-"base": "RigidBody2D",
-"class": "Bullet",
+"base": "Position2D",
+"class": "BlockPlacement",
 "language": "GDScript",
-"path": "res://src/Objects/Bullet.gd"
+"path": "res://src/Actors/BlockPlacement.gd"
 }, {
 "base": "Area2D",
 "class": "Coin",
 "language": "GDScript",
 "path": "res://src/Objects/Coin.gd"
-}, {
-"base": "Actor",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://src/Actors/Enemy.gd"
-}, {
-"base": "Position2D",
-"class": "Gun",
-"language": "GDScript",
-"path": "res://src/Actors/Gun.gd"
 }, {
 "base": "Actor",
 "class": "Player",
@@ -41,23 +31,15 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Bullet": "",
+"BlockPlacement": "",
 "Coin": "",
-"Enemy": "",
-"Gun": "",
 "Player": ""
 }
 
 [application]
 
-config/name="Platformer 2D"
-config/description="This demo is a pixel art 2D platformer with graphics and sound.
-
-It shows you how to code characters and physics-based objects
-in a real game context. This is a relatively complete demo
-where the player can jump, walk on slopes, fire bullets,
-interact with enemies, and more. It contains one closed
-level, and the player is invincible, unlike the enemies."
+config/name="Survive the Island"
+config/description="For the GDFG June 2022 Game Jam: https://itch.io/jam/gdfgs-monthly-game-jam-17"
 run/main_scene="res://src/Main/Game.tscn"
 config/icon="res://icon.png"
 target_fps="60"
@@ -72,11 +54,11 @@ gdscript/warnings/unsafe_call_argument=true
 
 [display]
 
-window/size/width=800
-window/size/height=480
+window/size/width=720
+window/size/height=320
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 stretch/aspect="keep_height"
 stretch/mode="2d"
 
