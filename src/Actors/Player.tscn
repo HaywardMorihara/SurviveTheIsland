@@ -249,7 +249,7 @@ stream = ExtResource( 3 )
 layer = 0
 
 [node name="Left" type="TouchScreenButton" parent="UI"]
-position = Vector2( 27.7593, 360.87 )
+position = Vector2( 8, 211 )
 scale = Vector2( 1.49157, 1.46265 )
 normal = ExtResource( 5 )
 passby_press = true
@@ -257,7 +257,7 @@ action = "move_left"
 visibility_mode = 1
 
 [node name="Right" type="TouchScreenButton" parent="UI"]
-position = Vector2( 121.542, 361.415 )
+position = Vector2( 109, 211 )
 scale = Vector2( 1.49157, 1.46265 )
 normal = ExtResource( 6 )
 passby_press = true
@@ -265,14 +265,14 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="Jump" type="TouchScreenButton" parent="UI"]
-position = Vector2( 666.224, 359.02 )
+position = Vector2( 605, 207 )
 scale = Vector2( 1.49157, 1.46265 )
 normal = ExtResource( 7 )
 action = "jump"
 visibility_mode = 1
 
 [node name="Fire" type="TouchScreenButton" parent="UI"]
-position = Vector2( 668.073, 262.788 )
+position = Vector2( 606, 104 )
 scale = Vector2( 1.49157, 1.46265 )
 normal = ExtResource( 8 )
 action = "shoot"
