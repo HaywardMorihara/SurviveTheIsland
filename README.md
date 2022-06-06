@@ -65,3 +65,17 @@ they contain a lot of comments that explain how each class works.
 > - Pause and pause menu.
 > - Pixel art visuals.
 > - Sound effects and music.
+
+## CI
+Using https://github.com/marketplace/actions/godot-ci
+* https://github.com/abarichello/godot-ci 
+* https://hub.docker.com/r/barichello/godot-ci
+
+
+Tutorial for setting it up: https://dev.to/jeremyckahn/automating-godot-game-releases-to-itchio-1a96 
+* https://gist.github.com/jeremyckahn/ff4f0e409f089ec36bdecb5a5adb6819
+* https://github.com/aBARICHELLO/godot-ci/blob/master/.github/workflows/godot-ci.yml#L8-99
+
+Butler:
+* https://github.com/marketplace/actions/butler-push?version=v1.0.2
+* https://github.com/manleydev/butler-publish-itchio-action
