@@ -27,9 +27,12 @@ https://desktop.github.com/ provides a Git UI if you're more comfortable working
 
 **Blocks**
 
-We're thinking will start with using Tilemap.
+We're thinking all starting "blocks" are tiles in the Tilemap.
 
-We may want to use RigidBody, StaticBody, or KinematicBody for different types of blocks w/ different properties in the future.
+Then, when placing "Blocks", they're RigidBody, StaticBody, or KinematicBody (for different types of blocks w/ different properties).
+
+IMPORTANT: Make sure Blocks are part of the Collision Layer and Collision Mask '5'. I'm not sure exactly why the demo did this (why does the game need it? Is it just best practice?). We haven't bothered to change it (yet, anyway).
+
 
 ### Building Off of Godot's Platformer Demo
 The code was built off of [Godot's official Platformer Demo](https://godotengine.org/asset-library/asset/120). We've taken out parts that we don't need (enemies, bullets) and kept the core of what we need (jumping, background, controls, etc.), along with a few features that we don't need now but _might_ want (coins, platforms, splitscreen).

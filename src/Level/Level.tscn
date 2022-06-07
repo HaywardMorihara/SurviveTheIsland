@@ -24,3 +24,5 @@ tile_data = PoolIntArray( 851967, 536870912, 0, 786432, 0, 0, 786433, 0, 0, 7864
 stream = ExtResource( 8 )
 autoplay = true
 script = ExtResource( 9 )
+
+[node name="Blocks" type="Node2D" parent="."]

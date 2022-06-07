@@ -18,3 +18,5 @@ position = Vector2( 277, 356 )
 layer = 100
 
 [node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
+
+[connection signal="block_placed" from="Level/Player" to="Level" method="_on_Player_block_placed"]
