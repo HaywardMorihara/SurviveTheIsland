@@ -4,6 +4,7 @@ extends Actor
 
 # warning-ignore:unused_signal
 signal collect_coin()
+signal block_placed(block)
 
 const FLOOR_DETECT_DISTANCE = 20.0
 
@@ -14,7 +15,7 @@ onready var animation_player = $AnimationPlayer
 onready var shoot_timer = $ShootAnimation
 onready var sprite = $Sprite
 onready var sound_jump = $Jump
-onready var gun = sprite.get_node(@"BlockPlacement")
+onready var block_placer = get_node(@"BlockPlacement")
 
 
 func _ready():
@@ -76,13 +77,13 @@ func _physics_process(_delta):
 		else:
 			sprite.scale.x = -1
 
-	# We use the sprite's scale to store Robi’s look direction which allows us to shoot
-	# bullets forward.
-	# There are many situations like these where you can reuse existing properties instead of
-	# creating new variables.
+	_aim()
+
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
-		is_shooting = gun.place(sprite.scale.x)
+		is_shooting = block_placer.place()
+	elif Input.is_action_just_pressed("remove_block" + action_suffix):
+		is_shooting = block_placer.remove()
 
 	var animation = get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
@@ -96,7 +97,7 @@ func get_direction():
 		Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix),
 		-1 if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) else 0
 	)
-
+	
 
 # This function calculates a new velocity whenever you need it.
 # It allows you to interrupt jumps.
@@ -132,3 +133,18 @@ func get_new_animation(is_shooting = false):
 	if is_shooting:
 		animation_new += "_weapon"
 	return animation_new
+
+# TODO Don't just hardcode "offsets"
+func _aim():
+	if Input.is_action_just_pressed("aim_up" + action_suffix):
+		$BlockPlacement.position = Vector2(0, -46)
+	if Input.is_action_just_pressed("aim_down" + action_suffix):
+		$BlockPlacement.position = Vector2(0, 18)
+	if Input.is_action_just_pressed("aim_left" + action_suffix):
+		$BlockPlacement.position = Vector2(-42, -16)
+	if Input.is_action_just_pressed("aim_right" + action_suffix):
+		$BlockPlacement.position = Vector2(32, -16)
+		
+
+func _on_BlockPlacement_block_placed(block):
+	emit_signal("block_placed", block)

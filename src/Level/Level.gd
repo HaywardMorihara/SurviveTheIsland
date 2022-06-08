@@ -13,3 +13,7 @@ func _ready():
 			camera.limit_top = LIMIT_TOP
 			camera.limit_right = LIMIT_RIGHT
 			camera.limit_bottom = LIMIT_BOTTOM
+
+
+func _on_Player_block_placed(block):
+	$Blocks.add_child(block)
