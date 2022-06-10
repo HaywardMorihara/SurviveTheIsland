@@ -8,7 +8,6 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.offest.x += 100
 	print('YEA WORKS')
 
 
@@ -17,4 +16,10 @@ func _physics_process(delta):
 	pass
 
 func _on_RigidBody2D_body_entered(body):
-	$Sprite.offest.x += 100
+	if body.name == 'Player':
+		# hurt player (placeholder)
+		print('Hurt Player')
+	elif body.name == 'TileMap':
+		# break block
+		print('Break Block')
+		body.set_cell(6,12,-1)

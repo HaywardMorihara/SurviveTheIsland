@@ -22,4 +22,5 @@ layer = 100
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 257.314, 220.315 )
+
 [connection signal="block_placed" from="Level/Player" to="Level" method="_on_Player_block_placed"]
