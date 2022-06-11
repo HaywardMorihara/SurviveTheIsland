@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="LavaPiece" type="RigidBody2D"]
 collision_layer = 17
 collision_mask = 17
 mass = 0.111111
