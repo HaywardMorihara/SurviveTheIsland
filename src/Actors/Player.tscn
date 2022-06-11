@@ -225,8 +225,8 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -14 )
 texture = ExtResource( 2 )
-vframes = 2
 hframes = 16
+vframes = 2
 frame = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -286,4 +286,5 @@ scale = Vector2( 1.49157, 1.46265 )
 normal = ExtResource( 8 )
 action = "shoot"
 visibility_mode = 1
+
 [connection signal="block_placed" from="BlockPlacement" to="." method="_on_BlockPlacement_block_placed"]
