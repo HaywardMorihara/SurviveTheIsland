@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/art/blocks/blue_grass_tileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 15 )
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["sand_block"]]
+collision_mask = 21
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

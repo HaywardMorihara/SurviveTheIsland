@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/volcano_improved_.png-1a5f3435076557b7b7dd3a805b42211e.stex"
+path="res://.import/alien_palm_tree.png-d1fad993d27f6116df91f9f3e340fc18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/background/volcano_improved_.png"
-dest_files=[ "res://.import/volcano_improved_.png-1a5f3435076557b7b7dd3a805b42211e.stex" ]
+source_file="res://assets/art/background/alien_palm_tree.png"
+dest_files=[ "res://.import/alien_palm_tree.png-d1fad993d27f6116df91f9f3e340fc18.stex" ]
 
 [params]
 
