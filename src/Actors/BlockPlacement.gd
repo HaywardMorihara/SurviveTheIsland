@@ -8,6 +8,8 @@ signal block_placed(block)
 
 const StaticBlock = preload("res://src/Blocks/StaticBlock.tscn")
 
+const BlockSize = 32.0
+
 onready var sound_shoot = $Shoot
 onready var timer = $Cooldown
 
@@ -31,7 +33,6 @@ func place():
 
 # This method is only called by Player.gd.
 func remove():
-	print("here")
 	if not timer.is_stopped():
 		return false
 	
@@ -47,3 +48,16 @@ func remove():
 	
 	timer.start()
 	return true
+	
+
+func snap_to_grid(vec):
+	global_position = _snap_vector_to_grid(vec) + Vector2(BlockSize/2, BlockSize/2)
+
+
+func _snap_vector_to_grid(vec) -> Vector2:
+	return Vector2(_snap_float_to_grid(vec.x), _snap_float_to_grid(vec.y))
+	
+
+func _snap_float_to_grid(value) -> float:
+	var remainder := fmod(value, BlockSize)
+	return value - remainder

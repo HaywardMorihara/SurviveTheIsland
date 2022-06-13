@@ -77,7 +77,8 @@ func _physics_process(_delta):
 		else:
 			sprite.scale.x = -1
 
-	_aim()
+	$MouseAimer.look_at(get_global_mouse_position())
+	$BlockPlacement.snap_to_grid($MouseAimer/Aim.global_position)
 
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
@@ -134,17 +135,6 @@ func get_new_animation(is_shooting = false):
 		animation_new += "_weapon"
 	return animation_new
 
-# TODO Don't just hardcode "offsets"
-func _aim():
-	if Input.is_action_just_pressed("aim_up" + action_suffix):
-		$BlockPlacement.position = Vector2(0, -46)
-	if Input.is_action_just_pressed("aim_down" + action_suffix):
-		$BlockPlacement.position = Vector2(0, 18)
-	if Input.is_action_just_pressed("aim_left" + action_suffix):
-		$BlockPlacement.position = Vector2(-42, -16)
-	if Input.is_action_just_pressed("aim_right" + action_suffix):
-		$BlockPlacement.position = Vector2(32, -16)
-		
 
 func _on_BlockPlacement_block_placed(block):
 	emit_signal("block_placed", block)
