@@ -19,4 +19,8 @@ layer = 100
 
 [node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
 
+[node name="WeatherTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="block_placed" from="Level/Player" to="Level" method="_on_Player_block_placed"]
+[connection signal="timeout" from="WeatherTimer" to="." method="_on_WeatherTimer_timeout"]

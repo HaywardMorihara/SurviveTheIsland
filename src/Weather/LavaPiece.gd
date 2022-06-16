@@ -1,3 +1,4 @@
+class_name LavaPiece
 extends RigidBody2D
 
 
@@ -9,6 +10,9 @@ extends RigidBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
+func start():
+	get_node('res://Src/Main/Game').add_child(self)
 
 func _on_RigidBody2D_body_entered(body):
 	if body.name == 'Player':

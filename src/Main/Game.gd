@@ -7,6 +7,8 @@ extends Node
 # that is to say, another node or script should not access them.
 onready var _pause_menu = $InterfaceLayer/PauseMenu
 
+# Weather variables
+var weather_scenes = [LavaPiece]
 
 func _init():
 	OS.min_window_size = OS.window_size
@@ -48,3 +50,7 @@ func _unhandled_input(event):
 		else:
 			# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
+
+func _on_WeatherTimer_timeout():
+	weather_scenes[0].start()
+	print('Weather!')
