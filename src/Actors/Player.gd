@@ -31,6 +31,7 @@ func _ready():
 		camera.custom_viewport = viewport
 		yield(get_tree(), "idle_frame")
 		camera.make_current()
+	$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 
 
 # Physics process is a built-in loop in Godot.
@@ -82,8 +83,10 @@ func _physics_process(_delta):
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
 		is_shooting = block_placer.place()
+		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 	elif Input.is_action_just_pressed("remove_block" + action_suffix):
 		is_shooting = block_placer.remove()
+		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 
 	var animation = get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
