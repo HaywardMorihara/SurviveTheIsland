@@ -10,7 +10,7 @@ For the [GDFG June 2022 Game Jam](https://itch.io/jam/gdfgs-monthly-game-jam-17)
 
 Built w/ Godot Version: v3.4.4
 
-## Workflow
+## Git
 **IMPORTANT**
 If you're working on Windows, run this command once you've cloned the repo:
 ```sh
@@ -22,6 +22,24 @@ We'll use the standard [branch/pull request/merge Github workflow](https://docs.
 Aim to keep branches as short-lived as possible (so that they don't diverge too far from the `main` branch, the final, shared branch).
 
 https://desktop.github.com/ provides a Git UI if you're more comfortable working with a UI (rather than the terminal).
+
+### Git Commands
+* To try someone else's branch that they've pushed to the Github repository:
+    ```sh
+    git switch <THEIR_BRANCH>
+    ```
+    For more info, see [here](https://stackoverflow.com/questions/9537392/git-fetch-remote-branch).
+* To rebase your branch to the latest changes in `main`:
+    ```sh
+    # These two commands update your local main to be the same as Github's main branch
+    git checkout main
+    git pull origin main
+
+    # Now go back to your branch, and rebase onto the latest version of main
+    git checkout <YOUR_BRANCH>
+    git rebase main
+    ```
+    For more info, see [here](https://stackoverflow.com/questions/3876977/update-git-branches-from-master).
 
 ## Code
 
