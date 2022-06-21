@@ -8,7 +8,7 @@ extends Node
 onready var _pause_menu = $InterfaceLayer/PauseMenu
 
 # Weather variables
-var weather_scenes = [LavaPiece]
+var weather_scenes = [preload("res://src/Weather/LavaPiece.tscn")]
 
 func _init():
 	OS.min_window_size = OS.window_size
@@ -52,5 +52,7 @@ func _unhandled_input(event):
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
 
 func _on_WeatherTimer_timeout():
-	weather_scenes[0].start()
+	var weather_node = weather_scenes[int(rand_range(0,0))].instance()
+	weather_node.position = Vector2(rand_range(-250, 900), 0)
+	self.add_child(weather_node)
 	print('Weather!')

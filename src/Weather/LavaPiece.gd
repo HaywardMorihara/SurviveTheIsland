@@ -11,9 +11,6 @@ extends RigidBody2D
 func _ready():
 	pass
 
-func start():
-	get_node('res://Src/Main/Game').add_child(self)
-
 func _on_RigidBody2D_body_entered(body):
 	if body.name == 'Player':
 		# hurt player (placeholder, we don't have health yet)
