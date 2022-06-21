@@ -100,4 +100,7 @@ func _snap_vector_to_grid(vec) -> Vector2:
 
 func _snap_float_to_grid(value) -> float:
 	var remainder := fmod(value, BlockSize)
-	return value - remainder
+	if value >= 0.0:
+		return value - remainder
+	else:
+		return value - (BlockSize + remainder)
