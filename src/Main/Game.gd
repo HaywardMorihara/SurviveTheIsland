@@ -52,7 +52,7 @@ func _unhandled_input(event):
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
 
 func _on_WeatherTimer_timeout():
-	var weather_node = weather_scenes[int(rand_range(0,0))].instance()
-	weather_node.position = Vector2(rand_range(-250, 900), 0)
-	self.add_child(weather_node)
-	print('Weather!')
+	for i in range(1, 10):
+		var weather_node = weather_scenes[int(rand_range(0,0))].instance()
+		weather_node.position = Vector2(rand_range(-250, 900), rand_range(-250, -500))
+		self.add_child(weather_node)
