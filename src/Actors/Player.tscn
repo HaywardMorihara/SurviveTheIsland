@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/robot_demo.png" type="Texture" id=2]
@@ -17,6 +17,12 @@
 [ext_resource path="res://assets/art/blocks/demo_block.png" type="Texture" id=15]
 [ext_resource path="res://assets/art/blocks/blue_grass_tileset.png" type="Texture" id=16]
 [ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/Actors/ControlsTutorial.gd" type="Script" id=18]
+[ext_resource path="res://assets/art/ui/Gerald's Keys/Keys/W-Key.png" type="Texture" id=19]
+[ext_resource path="res://assets/art/ui/Gerald's Keys/Keys/D-Key.png" type="Texture" id=20]
+[ext_resource path="res://assets/art/ui/Gerald's Keys/Keys/A-Key.png" type="Texture" id=21]
+[ext_resource path="res://assets/art/ui/mouse_controls.png" type="Texture" id=22]
+[ext_resource path="res://src/Actors/MouseAimSprite.gd" type="Script" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -197,6 +203,117 @@ extents = Vector2( 10, 14 )
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 13 )
 
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 13 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 21 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 20 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=24]
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=25]
+font_data = ExtResource( 13 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=28]
+animations = [ {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=29]
+font_data = ExtResource( 13 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 22 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=33]
+font_data = ExtResource( 13 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 22 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=36]
+animations = [ {
+"frames": [ SubResource( 34 ), SubResource( 35 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 30
 script = ExtResource( 1 )
@@ -340,4 +457,126 @@ text = "x0"
 
 [node name="CoinsCounter" parent="UI" instance=ExtResource( 17 )]
 
+[node name="ControlsTutorial" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 18 )
+
+[node name="Timer" type="Timer" parent="UI/ControlsTutorial"]
+wait_time = 2.0
+autostart = true
+
+[node name="MovementKeys" type="Control" parent="UI/ControlsTutorial"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/ControlsTutorial/MovementKeys"]
+margin_left = 337.0
+margin_top = 34.0
+margin_right = 381.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 17 )
+text = "Move:"
+
+[node name="JumpKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
+position = Vector2( 358, 73 )
+frames = SubResource( 14 )
+playing = true
+
+[node name="LeftMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
+position = Vector2( 324, 101 )
+frames = SubResource( 20 )
+frame = 1
+playing = true
+
+[node name="RightMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
+position = Vector2( 391, 101 )
+frames = SubResource( 23 )
+playing = true
+
+[node name="MouseAim" type="Control" parent="UI/ControlsTutorial"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/ControlsTutorial/MouseAim"]
+margin_left = 345.0
+margin_top = 22.0
+margin_right = 385.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 24 )
+text = "Aim:"
+
+[node name="Sprite" type="Sprite" parent="UI/ControlsTutorial/MouseAim"]
+position = Vector2( 358, 59 )
+texture = ExtResource( 22 )
+hframes = 4
+script = ExtResource( 23 )
+
+[node name="Tween" type="Tween" parent="UI/ControlsTutorial/MouseAim/Sprite"]
+
+[node name="MouseRightClick" type="Control" parent="UI/ControlsTutorial"]
+visible = false
+margin_left = 305.0
+margin_top = 24.0
+margin_right = 345.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="UI/ControlsTutorial/MouseRightClick"]
+margin_left = 11.0
+margin_right = 131.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 25 )
+text = "Pickup Blocks:"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseRightClick"]
+position = Vector2( 68, 54 )
+frames = SubResource( 28 )
+playing = true
+
+[node name="MouseLeftClick" type="Control" parent="UI/ControlsTutorial"]
+visible = false
+margin_left = 300.0
+margin_top = 34.0
+margin_right = 340.0
+margin_bottom = 74.0
+
+[node name="Label" type="Label" parent="UI/ControlsTutorial/MouseLeftClick"]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 104.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 29 )
+text = "Place Blocks"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseLeftClick"]
+position = Vector2( 43, 45 )
+frames = SubResource( 32 )
+frame = 1
+playing = true
+
+[node name="MouseScroll" type="Control" parent="UI/ControlsTutorial"]
+visible = false
+margin_left = 12.0
+margin_top = 1.0
+margin_right = 52.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="UI/ControlsTutorial/MouseScroll"]
+margin_left = 250.0
+margin_top = 25.0
+margin_right = 373.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 33 )
+text = "Change Block Type:"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseScroll"]
+position = Vector2( 331, 79 )
+frames = SubResource( 36 )
+frame = 1
+playing = true
+
 [connection signal="block_placed" from="BlockPlacement" to="." method="_on_BlockPlacement_block_placed"]
+[connection signal="timeout" from="UI/ControlsTutorial/Timer" to="UI/ControlsTutorial" method="_on_Timer_timeout"]
+[connection signal="tween_completed" from="UI/ControlsTutorial/MouseAim/Sprite/Tween" to="UI/ControlsTutorial/MouseAim/Sprite" method="_on_Tween_tween_completed"]

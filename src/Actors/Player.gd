@@ -57,6 +57,7 @@ func _physics_process(_delta):
 	# Play jump sound
 	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
 		sound_jump.play()
+		$UI/ControlsTutorial.has_moved = true
 
 	var direction = get_direction()
 
@@ -74,6 +75,7 @@ func _physics_process(_delta):
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the direction you move.
 	if direction.x != 0:
+		$UI/ControlsTutorial.has_moved = true
 		if direction.x > 0:
 			sprite.scale.x = 1
 		else:
@@ -86,15 +88,18 @@ func _physics_process(_delta):
 		block_placer.cycle_block_type()
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 		$UI.update_block_type(block_placer.current_block_type)
-
-	# _aim()
+		$UI/ControlsTutorial.has_switched_block_type = true
 
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
 		is_shooting = block_placer.place()
+		if is_shooting:
+			$UI/ControlsTutorial.has_placed_block = true
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 	elif Input.is_action_just_pressed("remove_block" + action_suffix):
 		is_shooting = block_placer.remove()
+		if is_shooting:
+			$UI/ControlsTutorial.has_picked_up_block = true
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 
 	var animation = get_new_animation(is_shooting)
@@ -149,3 +154,8 @@ func get_new_animation(is_shooting = false):
 
 func _on_BlockPlacement_block_placed(block):
 	emit_signal("block_placed", block)
+
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		$UI/ControlsTutorial.has_aimed = true
