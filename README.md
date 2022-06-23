@@ -4,7 +4,7 @@ Made By:
 * [Murphy's Dad](https://murphysdad.itch.io/)
 * [ScrapyNinja](https://scrapyninja.itch.io/)
 * [00Her0](https://00her0.itch.io/)
-* imortalicecream
+* [imortalicecream](https://itch.io/profile/immortalicecream)
 
 For the [GDFG June 2022 Game Jam](https://itch.io/jam/gdfgs-monthly-game-jam-17).
 
