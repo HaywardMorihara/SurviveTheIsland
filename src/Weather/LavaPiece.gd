@@ -5,7 +5,7 @@ extends RigidBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var animation_player = get_node('../Transition/Background/AnimationPlayer')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,8 +13,7 @@ func _ready():
 
 func _on_RigidBody2D_body_entered(body):
 	if body.name == 'Player':
-		# hurt player (placeholder, we don't have health yet)
-		print('Hurt Player')
+		animation_player.play("FadeGameOver")
 		self.queue_free()
 	elif body.name == 'TileMap':
 		# break block
