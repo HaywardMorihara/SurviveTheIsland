@@ -19,6 +19,8 @@ func _on_RigidBody2D_body_entered(body):
 		# break block
 		var body_position = body.world_to_map(position)
 		body.set_cell(body_position.x,body_position.y+1,-1)
+		body.set_cell(body_position.x-1,body_position.y+1,-1)
+		body.set_cell(body_position.x+1,body_position.y+1,-1)
 		self.queue_free()
 	else:
 		# breaking player placed blocks
