@@ -10,6 +10,7 @@ extents = Vector2( 16, 16 )
 collision_layer = 17
 collision_mask = 17
 mass = 0.111111
+gravity_scale = 0.5
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
