@@ -67,15 +67,15 @@ expand_icon = true
 
 [node name="Menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -20.0
+volume_db = -8.0
 
 [node name="Transition" parent="." instance=ExtResource( 5 )]
 layer = 0
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_top = 10.0
-margin_bottom = 51.0
+margin_top = 14.0
+margin_bottom = 55.0
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 2 )
 text = "Survive the Island"

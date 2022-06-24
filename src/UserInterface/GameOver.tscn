@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/UserInterface/Transition.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/art/background/sky.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/background/volcano new and improved1.png" type="Texture" id=2]
 [ext_resource path="res://src/UserInterface/GameOver.gd" type="Script" id=3]
 [ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=4]
 [ext_resource path="res://src/UserInterface/Score.gd" type="Script" id=5]
@@ -13,7 +13,6 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 360, 160 )
-scale = Vector2( 45, 1.25 )
 texture = ExtResource( 2 )
 
 [node name="YouDied" type="RichTextLabel" parent="."]
