@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var animation_player = get_node('../Transition/Background/AnimationPlayer')
+
 const LIMIT_LEFT = -315
 const LIMIT_TOP = -250
 const LIMIT_RIGHT = 955
@@ -17,3 +19,8 @@ func _ready():
 
 func _on_Player_block_placed(block):
 	$Blocks.add_child(block)
+
+
+func _on_FallDeath_body_entered(body):
+	if body.name == 'Player':
+		animation_player.play("FadeGameOver")

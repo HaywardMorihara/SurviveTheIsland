@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=8]
 [ext_resource path="res://src/Level/Music.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1200, 10 )
 
 [node name="Level" type="Node2D"]
 pause_mode = 1
@@ -32,3 +35,11 @@ script = ExtResource( 9 )
 
 [node name="Coin" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 243, 341 )
+
+[node name="FallDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2( 302, 1026 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="FallDeath" to="." method="_on_FallDeath_body_entered"]
