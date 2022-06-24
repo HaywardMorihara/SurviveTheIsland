@@ -245,6 +245,7 @@ position = Vector2( 0, -14 )
 
 [node name="Aim" type="Sprite" parent="MouseAimer"]
 position = Vector2( 42, 1 )
+z_index = 1
 texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
