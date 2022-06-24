@@ -43,8 +43,10 @@ func place():
 		sound_shoot.play()
 		emit_signal("block_placed", block)
 	
-	timer.start()
-	return true
+		timer.start()
+		return true
+	
+	return false
 
 # This method is only called by Player.gd.
 func remove():
@@ -59,8 +61,9 @@ func remove():
 			var tile_pos = tile_map.world_to_map(global_position)
 			var cell_id = tile_map.get_cellv(tile_pos)
 			var tile_name = tile_map.tile_set.tile_get_name(cell_id)
-			block_inventory[tile_name] += 1
-			tile_map.set_cell(tile_pos.x, tile_pos.y, -1)
+			if tile_name:
+				block_inventory[tile_name] += 1
+				tile_map.set_cell(tile_pos.x, tile_pos.y, -1)
 		elif overlapping_bodies[0] is PhysicsBody2D:
 			var block = overlapping_bodies[0]
 			# NOTE: Making an assumption about index in groups array...
@@ -68,12 +71,14 @@ func remove():
 			var groups = block.get_groups()
 			for group in groups:
 				if group.match("*_block"):
-					block_inventory[groups[1]] += 1
+					block_inventory[group] += 1
 					block.queue_free()
 					break
 	
-	timer.start()
-	return true
+		timer.start()
+		return true
+		
+	return false
 
 
 func cycle_block_type() -> void:

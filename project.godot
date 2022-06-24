@@ -72,6 +72,14 @@ stretch/mode="2d"
 
 singletons=[  ]
 
+[global]
+
+font=true
+
+[gui]
+
+theme/custom_font="res://assets/theme/fonts/kenney_mini_square.tres"
+
 [image_loader]
 
 repeat=false
