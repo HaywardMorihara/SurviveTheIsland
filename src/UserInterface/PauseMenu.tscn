@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
 [ext_resource path="res://src/UserInterface/PauseMenu.gd" type="Script" id=2]
-[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=3]
 [ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 44
-font_data = ExtResource( 3 )
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -44,36 +40,38 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_top = 7.0
+margin_top = 31.0
 margin_right = 300.0
-margin_bottom = 62.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 50.0
+theme = ExtResource( 3 )
 text = "Game Paused"
 align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_top = 68.0
+margin_top = 56.0
 margin_right = 300.0
-margin_bottom = 88.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="ResumeButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_left = 60.0
-margin_top = 94.0
+margin_top = 82.0
 margin_right = 240.0
-margin_bottom = 140.0
+margin_bottom = 122.0
 rect_min_size = Vector2( 180, 40 )
 size_flags_horizontal = 4
+theme = ExtResource( 3 )
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_left = 60.0
-margin_top = 146.0
+margin_top = 128.0
 margin_right = 240.0
-margin_bottom = 192.0
+margin_bottom = 168.0
 rect_min_size = Vector2( 180, 40 )
 size_flags_horizontal = 4
+theme = ExtResource( 3 )
 text = "Quit"
 
 [node name="CoinsCounter" parent="ColorRect" instance=ExtResource( 4 )]
