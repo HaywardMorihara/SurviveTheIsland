@@ -74,11 +74,7 @@ singletons=[  ]
 
 [global]
 
-font=true
-
-[gui]
-
-theme/custom_font="res://assets/theme/fonts/kenney_mini_square.tres"
+font=false
 
 [image_loader]
 
