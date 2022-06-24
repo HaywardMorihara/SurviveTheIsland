@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/UserInterface/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/background/volcano new and improved1.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/music/Gulls.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=4]
 [ext_resource path="res://src/UserInterface/Transition.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/audio/music/Menu.mp3" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/theme/fonts/SpecialElite-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = SubResource( 1 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -19,55 +27,59 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Play" type="Button" parent="."]
-margin_left = 180.0
+margin_left = 190.0
 margin_top = 180.0
 margin_right = 340.0
-margin_bottom = 220.0
+margin_bottom = 210.0
+theme = ExtResource( 4 )
 action_mode = 0
 text = "Play"
-expand_icon = true
 
 [node name="Options" type="Button" parent="."]
-margin_left = 400.0
+margin_left = 410.0
 margin_top = 180.0
 margin_right = 560.0
-margin_bottom = 220.0
+margin_bottom = 210.0
+theme = ExtResource( 4 )
 action_mode = 0
 text = "Options"
 expand_icon = true
 
 [node name="Credits" type="Button" parent="."]
-margin_left = 180.0
+margin_left = 190.0
 margin_top = 240.0
 margin_right = 340.0
-margin_bottom = 280.0
+margin_bottom = 270.0
+theme = ExtResource( 4 )
 action_mode = 0
 text = "Credits"
 expand_icon = true
 
 [node name="Exit" type="Button" parent="."]
-margin_left = 400.0
+margin_left = 410.0
 margin_top = 240.0
 margin_right = 560.0
-margin_bottom = 280.0
+margin_bottom = 270.0
+theme = ExtResource( 4 )
 action_mode = 0
 text = "Exit"
 expand_icon = true
 
 [node name="Menu" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 3 )
 volume_db = -20.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 89.0
-margin_top = 34.0
-margin_right = 545.0
-margin_bottom = 91.0
-rect_scale = Vector2( 3, 3 )
-text = "Survive the Island..."
 
 [node name="Transition" parent="." instance=ExtResource( 5 )]
 layer = 0
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 51.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 2 )
+text = "Survive the Island"
+align = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
