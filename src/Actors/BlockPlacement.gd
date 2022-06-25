@@ -60,6 +60,8 @@ func remove():
 			var tile_map = overlapping_bodies[0]
 			var tile_pos = tile_map.world_to_map(global_position)
 			var cell_id = tile_map.get_cellv(tile_pos)
+			if cell_id == -1:
+				return false
 			var tile_name = tile_map.tile_set.tile_get_name(cell_id)
 			if tile_name:
 				block_inventory[tile_name] += 1
