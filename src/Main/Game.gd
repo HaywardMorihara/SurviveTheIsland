@@ -7,8 +7,8 @@ extends Node
 # that is to say, another node or script should not access them.
 onready var _pause_menu = $InterfaceLayer/PauseMenu
 
-# Weather variables
-var weather_scenes = [preload("res://src/Weather/LavaPiece.tscn")]
+var eruption = load("res://src/Weather/Eruption.gd").new()
+
 
 func _init():
 	OS.min_window_size = OS.window_size
@@ -21,7 +21,9 @@ func _notification(what):
 		if name == "Splitscreen":
 			$Black/SplitContainer/ViewportContainer1.free()
 			$Black.queue_free()
-
+	if what == NOTIFICATION_PARENTED:
+		# Have to wait until the child is instanced before setting this
+		eruption.set_level_bounds($Level.LIMIT_LEFT, $Level.LIMIT_TOP, $Level.LIMIT_RIGHT, $Level.LIMIT_BOTTOM)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
@@ -52,7 +54,13 @@ func _unhandled_input(event):
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
 
 func _on_WeatherTimer_timeout():
-	for i in range(1, 30):
-		var weather_node = weather_scenes[int(rand_range(0,0))].instance()
-		weather_node.position = Vector2(rand_range(-250, 900), rand_range(-250, -750))
-		self.add_child(weather_node)
+	# https://gdscript.com/solutions/random-numbers/
+	var random_weather := randi() % 1
+	
+	match random_weather:
+		0:
+			var lava_pieces = eruption.start()
+			for lp in lava_pieces:
+				self.add_child(lp)
+				lp.connect("place_coin", $Level/Coins, "_on_LavaPiece_place_coin")
+	

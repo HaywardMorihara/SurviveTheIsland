@@ -1,15 +1,12 @@
 class_name LavaPiece
 extends RigidBody2D
 
+signal place_coin(pos)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var coin_probability_denominator := 3
+
 onready var animation_player = get_node('../Transition/Background/AnimationPlayer')
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
 func _on_RigidBody2D_body_entered(body):
 	if body.name == 'Player':
@@ -21,8 +18,12 @@ func _on_RigidBody2D_body_entered(body):
 		body.set_cell(body_position.x,body_position.y+1,-1)
 		body.set_cell(body_position.x-1,body_position.y+1,-1)
 		body.set_cell(body_position.x+1,body_position.y+1,-1)
+		if randi() % coin_probability_denominator == 0:
+			emit_signal("place_coin", position)
 		self.queue_free()
 	else:
 		# breaking player placed blocks
 		body.queue_free()
+		if randi() % coin_probability_denominator == 0:
+			emit_signal("place_coin", position)
 		self.queue_free()

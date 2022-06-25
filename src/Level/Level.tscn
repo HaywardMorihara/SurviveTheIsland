@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Level/Coins.gd" type="Script" id=3]
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=5]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=8]
@@ -32,6 +33,7 @@ script = ExtResource( 9 )
 [node name="Blocks" type="Node2D" parent="."]
 
 [node name="Coins" type="Node2D" parent="."]
+script = ExtResource( 3 )
 
 [node name="Coin" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 243, 341 )
