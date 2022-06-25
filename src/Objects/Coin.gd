@@ -12,5 +12,6 @@ onready var animation_player = $AnimationPlayer
 # collisions and frees it from memory, saving us from writing more complex code.
 # Click the AnimationPlayer node to see the animation timeline.
 func _on_body_entered(_body):
-	animation_player.play("picked")
-	_body.emit_signal("collect_coin")
+	if _body.is_in_group("player"):
+		animation_player.play("picked")
+		_body.emit_signal("collect_coin")
