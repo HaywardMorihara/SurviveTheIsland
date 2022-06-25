@@ -24,6 +24,7 @@ func _notification(what):
 	if what == NOTIFICATION_PARENTED:
 		# Have to wait until the child is instanced before setting this
 		eruption.set_level_bounds($Level.LIMIT_LEFT, $Level.LIMIT_TOP, $Level.LIMIT_RIGHT, $Level.LIMIT_BOTTOM)
+		
 
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
@@ -54,6 +55,13 @@ func _unhandled_input(event):
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
 
 func _on_WeatherTimer_timeout():
+	$InterfaceLayer/WeatherAlert.alert()
+	$CanvasModulate.visible = true
+	
+
+func _on_WeatherAlert_alert_finished():
+	$CanvasModulate.visible = false
+	
 	# https://gdscript.com/solutions/random-numbers/
 	var random_weather := randi() % 1
 	
@@ -64,3 +72,4 @@ func _on_WeatherTimer_timeout():
 				self.add_child(lp)
 				lp.connect("place_coin", $Level/Coins, "_on_LavaPiece_place_coin")
 	
+	$WeatherTimer.start()
