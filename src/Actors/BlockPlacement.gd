@@ -83,7 +83,17 @@ func remove():
 	return false
 
 
-func cycle_block_type() -> void:
+func cycle_block_type_down() -> void:
+	match current_block_type:
+		STONE_BLOCK_TYPE:
+			current_block_type = DIRT_BLOCK_TYPE
+		DIRT_BLOCK_TYPE:
+			current_block_type = SAND_BLOCK_TYPE
+		SAND_BLOCK_TYPE:
+			current_block_type = STONE_BLOCK_TYPE
+
+
+func cycle_block_type_up() -> void:
 	match current_block_type:
 		STONE_BLOCK_TYPE:
 			current_block_type = SAND_BLOCK_TYPE

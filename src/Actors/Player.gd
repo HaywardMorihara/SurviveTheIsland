@@ -84,8 +84,11 @@ func _physics_process(_delta):
 	$MouseAimer.look_at(get_global_mouse_position())
 	$BlockPlacement.snap_to_grid($MouseAimer/Aim.global_position)
 
-	if Input.is_action_just_released("cycle_block_type"):
-		block_placer.cycle_block_type()
+	if Input.is_action_just_released("cycle_block_type_down"):
+		block_placer.cycle_block_type_down()
+	if Input.is_action_just_released("cycle_block_type_up"):
+		block_placer.cycle_block_type_up()
+	if Input.is_action_just_released("cycle_block_type_up") or Input.is_action_just_released("cycle_block_type_down"):
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 		$UI.update_block_type(block_placer.current_block_type)
 		$UI/ControlsTutorial.has_switched_block_type = true
