@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/art/background/trees bg.png" type="Texture" id=8]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
-scroll_base_scale = Vector2( 0.4, 0 )
+scroll_base_scale = Vector2( 0.4, 0.2 )
 
 [node name="SkyVolcanoWater" type="Sprite" parent="."]
 position = Vector2( 360, 160 )
@@ -13,5 +13,5 @@ texture = ExtResource( 7 )
 [node name="Trees" type="ParallaxLayer" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Trees"]
-position = Vector2( 360, 180 )
+position = Vector2( 360, 220 )
 texture = ExtResource( 8 )
