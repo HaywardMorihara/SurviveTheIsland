@@ -56,3 +56,7 @@ func _on_QuitButton_pressed():
 func _on_Tween_all_completed():
 	if modulate.a < 0.5:
 		hide()
+
+
+func _on_MainMenu_pressed():
+	$Transition/Background/AnimationPlayer.play("FadeMainMenu")

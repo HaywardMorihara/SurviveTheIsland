@@ -424,6 +424,21 @@ normal = ExtResource( 8 )
 action = "shoot"
 visibility_mode = 1
 
+[node name="RemoveBlock" type="TouchScreenButton" parent="UI"]
+position = Vector2( 496, 208 )
+scale = Vector2( 1.49157, 1.46265 )
+normal = ExtResource( 8 )
+action = "remove_block"
+visibility_mode = 1
+
+[node name="ChangeBlock" type="TouchScreenButton" parent="UI"]
+position = Vector2( 635, -4 )
+scale = Vector2( 1, 0.980612 )
+normal = ExtResource( 8 )
+shape_visible = false
+action = "cycle_block_type_up"
+visibility_mode = 1
+
 [node name="BlockCount" type="Control" parent="UI"]
 margin_left = 645.0
 margin_top = 4.0
@@ -483,18 +498,17 @@ text = "Move:"
 [node name="JumpKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 358, 73 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 
 [node name="LeftMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 324, 101 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="RightMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 391, 101 )
 frames = SubResource( 23 )
-frame = 1
 playing = true
 
 [node name="MouseAim" type="Control" parent="UI/ControlsTutorial"]
@@ -535,7 +549,6 @@ text = "Pickup Blocks:"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseRightClick"]
 position = Vector2( 68, 54 )
 frames = SubResource( 28 )
-frame = 1
 playing = true
 
 [node name="MouseLeftClick" type="Control" parent="UI/ControlsTutorial"]
@@ -556,6 +569,7 @@ text = "Place Blocks"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseLeftClick"]
 position = Vector2( 43, 45 )
 frames = SubResource( 32 )
+frame = 1
 playing = true
 
 [node name="MouseScroll" type="Control" parent="UI/ControlsTutorial"]
@@ -576,6 +590,7 @@ text = "Change Block Type:"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseScroll"]
 position = Vector2( 331, 79 )
 frames = SubResource( 36 )
+frame = 1
 playing = true
 
 [connection signal="block_placed" from="BlockPlacement" to="." method="_on_BlockPlacement_block_placed"]

@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/art/background/volcano new and improved1.png" type="Texture" id=1]
 [ext_resource path="res://src/UserInterface/Transition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UserInterface/Credits.gd" type="Script" id=3]
 [ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/audio/music/Gulls.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/theme/fonts/SpecialElite-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/theme/fonts/SpecialElite-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = SubResource( 3 )
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -15,17 +29,94 @@ script = ExtResource( 3 )
 position = Vector2( 359.5, 160 )
 texture = ExtResource( 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -111.5
-margin_top = -10.0
-margin_right = 111.5
-margin_bottom = 10.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 251.0
+margin_top = 9.0
+margin_right = 468.0
+margin_bottom = 311.0
+
+[node name="Credits" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 217.0
+margin_bottom = 31.0
 theme = ExtResource( 4 )
-text = "UNDER CONSTRUCTION!!"
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 217.0
+margin_bottom = 65.0
+custom_constants/margin_bottom = 30
+
+[node name="Development Team" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 217.0
+margin_bottom = 122.0
+size_flags_horizontal = 5
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 4 )
+text = "Development Team
+"
+align = 1
+valign = 1
+
+[node name="Murphy\'s Dad" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 126.0
+margin_right = 217.0
+margin_bottom = 167.0
+size_flags_horizontal = 5
+theme = ExtResource( 4 )
+text = "Murphy's Dad
+"
+align = 1
+valign = 1
+
+[node name="ScrapyNinja" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 171.0
+margin_right = 217.0
+margin_bottom = 212.0
+size_flags_horizontal = 5
+theme = ExtResource( 4 )
+text = "ScrapyNinja
+"
+align = 1
+valign = 1
+
+[node name="00Her0" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 217.0
+margin_bottom = 257.0
+size_flags_horizontal = 5
+theme = ExtResource( 4 )
+text = "00her0
+"
+align = 1
+valign = 1
+
+[node name="imortalicecream" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 261.0
+margin_right = 217.0
+margin_bottom = 302.0
+size_flags_horizontal = 5
+theme = ExtResource( 4 )
+text = "imortalicecream
+"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+show_behind_parent = true
+margin_left = 251.0
+margin_top = 9.0
+margin_right = 468.0
+margin_bottom = 311.0
+color = Color( 0.52549, 0.192157, 0.403922, 0.776471 )
 
 [node name="MainMenu" type="Button" parent="."]
 margin_left = 561.0
