@@ -2,6 +2,7 @@ class_name LavaPiece
 extends RigidBody2D
 
 signal place_coin(pos)
+signal hit_player()
 
 export var coin_probability_denominator := 3
 
@@ -10,7 +11,7 @@ onready var animation_player = get_node('../Transition/Background/AnimationPlaye
 
 func _on_RigidBody2D_body_entered(body):
 	if body.name == 'Player':
-		animation_player.play("FadeGameOver")
+		emit_signal("hit_player")
 		self.queue_free()
 	elif body.name == 'TileMap':
 		# break block

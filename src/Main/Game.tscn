@@ -96,6 +96,7 @@ autoplay = "Alert"
 anims/Alert = SubResource( 2 )
 anims/RESET = SubResource( 7 )
 
+[connection signal="player_out_of_bounds" from="Level" to="." method="_on_Level_player_out_of_bounds"]
 [connection signal="block_placed" from="Level/Player" to="Level" method="_on_Player_block_placed"]
 [connection signal="alert_finished" from="InterfaceLayer/WeatherAlert" to="." method="_on_WeatherAlert_alert_finished"]
 [connection signal="timeout" from="InterfaceLayer/WeatherAlert/Timer" to="InterfaceLayer/WeatherAlert" method="_on_Timer_timeout"]

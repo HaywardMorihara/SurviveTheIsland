@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	$Play.grab_focus()
 
+
 func _on_Play_pressed():
 	$Transition/Background/AnimationPlayer.play("Fade")
 

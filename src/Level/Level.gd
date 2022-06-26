@@ -1,6 +1,7 @@
 extends Node2D
 
-onready var animation_player = get_node('../Transition/Background/AnimationPlayer')
+signal player_out_of_bounds
+
 
 const LIMIT_LEFT = -315
 const LIMIT_TOP = -250
@@ -23,4 +24,4 @@ func _on_Player_block_placed(block):
 
 func _on_FallDeath_body_entered(body):
 	if body.name == 'Player':
-		animation_player.play("FadeGameOver")
+		emit_signal("player_out_of_bounds")
