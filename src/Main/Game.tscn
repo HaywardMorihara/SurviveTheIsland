@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/UserInterface/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Main/Game.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/theme/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/Main/WeatherAlert.gd" type="Script" id=7]
 [ext_resource path="res://assets/audio/sfx/alarm.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sfx/rumble.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Alert"
@@ -52,11 +53,6 @@ pause_mode = 0
 
 [node name="Player" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 277, 356 )
-
-[node name="WeatherTimer" type="Timer" parent="."]
-wait_time = 40.0
-one_shot = true
-autostart = true
 
 [node name="Transition" parent="." instance=ExtResource( 5 )]
 
@@ -113,9 +109,15 @@ autostart = true
 visible = false
 color = Color( 0, 0, 0, 0 )
 
+[node name="SFX" type="Node" parent="."]
+
+[node name="Rumble" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 9 )
+volume_db = 13.109
+
 [connection signal="player_out_of_bounds" from="Level" to="." method="_on_Level_player_out_of_bounds"]
 [connection signal="block_placed" from="Level/Player" to="Level" method="_on_Player_block_placed"]
-[connection signal="timeout" from="WeatherTimer" to="." method="_on_WeatherTimer_timeout"]
 [connection signal="alert_finished" from="InterfaceLayer/WeatherAlert" to="." method="_on_WeatherAlert_alert_finished"]
 [connection signal="timeout" from="InterfaceLayer/WeatherAlert/Timer" to="InterfaceLayer/WeatherAlert" method="_on_Timer_timeout"]
 [connection signal="finished" from="InterfaceLayer/WeatherAlert/AudioStreamPlayer" to="InterfaceLayer/WeatherAlert" method="_on_AudioStreamPlayer_finished"]
+[connection signal="timeout" from="WeatherTimer" to="." method="_on_WeatherTimer_timeout"]

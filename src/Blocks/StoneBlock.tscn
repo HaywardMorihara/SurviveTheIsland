@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
-[node name="StaticBody2D" type="StaticBody2D" groups=["stone_block"]]
+[node name="StaticBody2D" type="StaticBody2D" groups=["blocks", "stone_block"]]
 collision_layer = 16
 collision_mask = 16
 
