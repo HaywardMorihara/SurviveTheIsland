@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
 [ext_resource path="res://src/UserInterface/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=3]
 [ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/Transition.tscn" type="PackedScene" id=5]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -16,16 +17,10 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.294118 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
 margin_left = 210.0
@@ -33,6 +28,7 @@ margin_top = 60.0
 margin_right = 510.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 300, 200 )
+theme = ExtResource( 3 )
 custom_constants/separation = 6
 alignment = 1
 __meta__ = {
@@ -40,38 +36,56 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_top = 31.0
+margin_top = 8.0
 margin_right = 300.0
-margin_bottom = 50.0
+margin_bottom = 27.0
 theme = ExtResource( 3 )
 text = "Game Paused"
 align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_top = 56.0
+margin_top = 33.0
 margin_right = 300.0
-margin_bottom = 76.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
 
 [node name="ResumeButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_left = 60.0
-margin_top = 82.0
+margin_top = 59.0
 margin_right = 240.0
-margin_bottom = 122.0
+margin_bottom = 99.0
 rect_min_size = Vector2( 180, 40 )
+focus_neighbour_bottom = NodePath("../MainMenu")
 size_flags_horizontal = 4
 theme = ExtResource( 3 )
+action_mode = 0
 text = "Resume"
+
+[node name="MainMenu" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 60.0
+margin_top = 105.0
+margin_right = 240.0
+margin_bottom = 145.0
+rect_min_size = Vector2( 180, 40 )
+focus_neighbour_top = NodePath("../ResumeButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+size_flags_horizontal = 4
+theme = ExtResource( 3 )
+action_mode = 0
+text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_left = 60.0
-margin_top = 128.0
+margin_top = 151.0
 margin_right = 240.0
-margin_bottom = 168.0
+margin_bottom = 191.0
 rect_min_size = Vector2( 180, 40 )
+focus_neighbour_top = NodePath("../MainMenu")
 size_flags_horizontal = 4
 theme = ExtResource( 3 )
+action_mode = 0
 text = "Quit"
 
 [node name="CoinsCounter" parent="ColorRect" instance=ExtResource( 4 )]
@@ -80,6 +94,9 @@ margin_bottom = 50.0
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Transition" parent="." instance=ExtResource( 5 )]
+
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_all_completed"]

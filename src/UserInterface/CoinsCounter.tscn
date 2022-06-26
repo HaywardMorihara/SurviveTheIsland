@@ -1,11 +1,18 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
+[ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/art/coin/coin.png" type="Texture" id=2]
 [ext_resource path="res://src/UserInterface/CoinsCounter.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://assets/theme/fonts/SpecialElite-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 22
+font_data = SubResource( 7 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -44,7 +51,9 @@ script = ExtResource( 3 )
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 5.0
 margin_right = -8.0
+custom_fonts/font = SubResource( 8 )
 text = "100"
 align = 2
 valign = 1
