@@ -2,8 +2,6 @@ class_name Player
 extends Actor
 
 
-# warning-ignore:unused_signal
-signal collect_coin()
 signal block_placed(block)
 
 const FLOOR_DETECT_DISTANCE = 20.0
@@ -162,3 +160,7 @@ func _on_BlockPlacement_block_placed(block):
 func _input(event):
 	if event is InputEventMouseMotion:
 		$UI/ControlsTutorial.has_aimed = true
+
+
+func collect_coin():
+	Global.coins_collected += 1

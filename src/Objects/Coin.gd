@@ -14,4 +14,4 @@ onready var animation_player = $AnimationPlayer
 func _on_body_entered(_body):
 	if _body.is_in_group("player"):
 		animation_player.play("picked")
-		_body.emit_signal("collect_coin")
+		_body.collect_coin()

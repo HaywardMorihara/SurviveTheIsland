@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if _anim_name == "Fade":
 		get_tree().change_scene("res://src/Main/Game.tscn")

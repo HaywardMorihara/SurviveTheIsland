@@ -6,9 +6,14 @@ extends Node
 # The "_" prefix is a convention to indicate that variables are private,
 # that is to say, another node or script should not access them.
 onready var _pause_menu = $InterfaceLayer/PauseMenu
+onready var animation_player = $Transition/Background/AnimationPlayer
 
 var eruption = load("res://src/Weather/Eruption.gd").new()
 
+var coins_collected := 0
+
+func _ready():
+	Global.coins_collected = 0
 
 func _init():
 	OS.min_window_size = OS.window_size
@@ -71,5 +76,14 @@ func _on_WeatherAlert_alert_finished():
 			for lp in lava_pieces:
 				self.add_child(lp)
 				lp.connect("place_coin", $Level/Coins, "_on_LavaPiece_place_coin")
+				lp.connect("hit_player", self, "_on_LavaPiece_hit_player")
 	
 	$WeatherTimer.start()
+
+
+func _on_Level_player_out_of_bounds():
+	animation_player.play("FadeGameOver")
+
+
+func _on_LavaPiece_hit_player():
+	animation_player.play("FadeGameOver")
