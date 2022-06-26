@@ -9,10 +9,6 @@
 [ext_resource path="res://src/Main/WeatherAlert.gd" type="Script" id=7]
 [ext_resource path="res://assets/audio/sfx/alarm.wav" type="AudioStream" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 6 )
-
 [sub_resource type="Animation" id=2]
 resource_name = "Alert"
 loop = true
@@ -44,19 +40,41 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 6 )
+
 [node name="Game" type="Node"]
-pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Level" parent="." instance=ExtResource( 3 )]
+pause_mode = 0
 
 [node name="Player" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 277, 356 )
 
+[node name="WeatherTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Transition" parent="." instance=ExtResource( 5 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
+autoplay = "Alert"
+anims/Alert = SubResource( 2 )
+anims/RESET = SubResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
+autoplay = "Alert"
+anims/Alert = SubResource( 2 )
+anims/RESET = SubResource( 7 )
+
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
-
-[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
 
 [node name="WeatherAlert" type="Control" parent="InterfaceLayer"]
 visible = false
@@ -81,6 +99,8 @@ Magnitude: X"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InterfaceLayer/WeatherAlert"]
 stream = ExtResource( 8 )
 
+[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
+
 [node name="WeatherTimer" type="Timer" parent="."]
 wait_time = 40.0
 one_shot = true
@@ -92,14 +112,9 @@ autostart = true
 visible = false
 color = Color( 0, 0, 0, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
-autoplay = "Alert"
-anims/Alert = SubResource( 2 )
-anims/RESET = SubResource( 7 )
-
 [connection signal="player_out_of_bounds" from="Level" to="." method="_on_Level_player_out_of_bounds"]
 [connection signal="block_placed" from="Level/Player" to="Level" method="_on_Player_block_placed"]
+[connection signal="timeout" from="WeatherTimer" to="." method="_on_WeatherTimer_timeout"]
 [connection signal="alert_finished" from="InterfaceLayer/WeatherAlert" to="." method="_on_WeatherAlert_alert_finished"]
 [connection signal="timeout" from="InterfaceLayer/WeatherAlert/Timer" to="InterfaceLayer/WeatherAlert" method="_on_Timer_timeout"]
 [connection signal="finished" from="InterfaceLayer/WeatherAlert/AudioStreamPlayer" to="InterfaceLayer/WeatherAlert" method="_on_AudioStreamPlayer_finished"]
-[connection signal="timeout" from="WeatherTimer" to="." method="_on_WeatherTimer_timeout"]
