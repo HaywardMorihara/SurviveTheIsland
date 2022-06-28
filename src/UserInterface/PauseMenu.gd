@@ -50,6 +50,7 @@ func _on_ResumeButton_pressed():
 
 func _on_QuitButton_pressed():
 	scene_root.notification(NOTIFICATION_WM_QUIT_REQUEST)
+	close()
 	get_tree().quit()
 
 
@@ -59,4 +60,5 @@ func _on_Tween_all_completed():
 
 
 func _on_MainMenu_pressed():
+	close()
 	$Transition/Background/AnimationPlayer.play("FadeMainMenu")
