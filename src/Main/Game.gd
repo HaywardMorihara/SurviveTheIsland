@@ -10,10 +10,17 @@ onready var animation_player = $Transition/Background/AnimationPlayer
 
 var eruption = load("res://src/Weather/Eruption.gd").new()
 
+enum Storm {
+	ERUPTION = 0,
+}
+var incoming_storm : int
+
 var coins_collected := 0
+
 
 func _ready():
 	Global.coins_collected = 0
+
 
 func _init():
 	OS.min_window_size = OS.window_size
@@ -59,19 +66,21 @@ func _unhandled_input(event):
 			# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
 
+
 func _on_WeatherTimer_timeout():
-	$InterfaceLayer/WeatherAlert.alert()
 	$CanvasModulate.visible = true
-	
+	# https://gdscript.com/solutions/random-numbers/
+	incoming_storm = randi() % 1
+	match incoming_storm:
+		Storm.ERUPTION:
+				$InterfaceLayer/WeatherAlert.alert(eruption.magnitude)
+
 
 func _on_WeatherAlert_alert_finished():
 	$CanvasModulate.visible = false
 	
-	# https://gdscript.com/solutions/random-numbers/
-	var random_weather := randi() % 1
-	
-	match random_weather:
-		0:
+	match incoming_storm:
+		Storm.ERUPTION:
 			var lava_pieces = eruption.start()
 			for lp in lava_pieces:
 				self.add_child(lp)
