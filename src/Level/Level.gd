@@ -6,7 +6,7 @@ signal player_out_of_bounds
 const LIMIT_LEFT = -315
 const LIMIT_TOP = -250
 const LIMIT_RIGHT = 955
-const LIMIT_BOTTOM = 990
+const LIMIT_BOTTOM = 1550
 
 func _ready():
 	for child in get_children():
