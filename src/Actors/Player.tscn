@@ -1,12 +1,11 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/robot_demo.png" type="Texture" id=2]
 [ext_resource path="res://assets/audio/sfx/jump.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sfx/shoot.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/art/ui/touch_button_left.png" type="Texture" id=5]
-[ext_resource path="res://assets/art/ui/touch_button_right.png" type="Texture" id=6]
-[ext_resource path="res://assets/art/ui/touch_button_jump.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/ui/button_xbox_dpad_light_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/ui/button_xbox_dpad_light_4.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/ui/touch_button_fire.png" type="Texture" id=8]
 [ext_resource path="res://src/Actors/BlockPlacement.gd" type="Script" id=9]
 [ext_resource path="res://assets/art/player/retina.png" type="Texture" id=10]
@@ -23,6 +22,9 @@
 [ext_resource path="res://assets/art/ui/Gerald's Keys/Keys/A-Key.png" type="Texture" id=21]
 [ext_resource path="res://assets/art/ui/mouse_controls.png" type="Texture" id=22]
 [ext_resource path="res://src/Actors/MouseAimSprite.gd" type="Script" id=23]
+[ext_resource path="res://assets/art/ui/button_xbox_digital_b_10.png" type="Texture" id=24]
+[ext_resource path="res://assets/art/ui/button_xbox_dpad_light_1.png" type="Texture" id=25]
+[ext_resource path="res://assets/art/ui/button_xbox_digital_a_10.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -395,43 +397,44 @@ layer = 0
 script = ExtResource( 14 )
 
 [node name="Left" type="TouchScreenButton" parent="UI"]
-position = Vector2( 8, 211 )
-scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 5 )
+position = Vector2( 8, 202 )
+scale = Vector2( 0.25, 0.25 )
+normal = ExtResource( 6 )
 passby_press = true
 action = "move_left"
 visibility_mode = 1
 
 [node name="Right" type="TouchScreenButton" parent="UI"]
-position = Vector2( 109, 211 )
-scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 6 )
+position = Vector2( 129, 202 )
+scale = Vector2( 0.25, 0.25 )
+normal = ExtResource( 5 )
 passby_press = true
 action = "move_right"
 visibility_mode = 1
 
 [node name="Jump" type="TouchScreenButton" parent="UI"]
-position = Vector2( 605, 207 )
-scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 7 )
+position = Vector2( 613, 213 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 25 )
 action = "jump"
 visibility_mode = 1
 
-[node name="Fire" type="TouchScreenButton" parent="UI"]
-position = Vector2( 606, 104 )
-scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 8 )
+[node name="PlaceBlock" type="TouchScreenButton" parent="UI"]
+position = Vector2( 613, 114 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 24 )
 action = "shoot"
 visibility_mode = 1
 
 [node name="RemoveBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 496, 208 )
-scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 8 )
+position = Vector2( 511, 221 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 26 )
 action = "remove_block"
 visibility_mode = 1
 
 [node name="ChangeBlock" type="TouchScreenButton" parent="UI"]
+modulate = Color( 1, 1, 1, 0.47451 )
 position = Vector2( 635, -4 )
 scale = Vector2( 1, 0.980612 )
 normal = ExtResource( 8 )
