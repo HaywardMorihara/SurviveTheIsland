@@ -9,9 +9,11 @@ onready var _pause_menu = $InterfaceLayer/PauseMenu
 onready var animation_player = $Transition/Background/AnimationPlayer
 
 var eruption = load("res://src/Weather/Eruption.gd").new()
+var earthquake = load("res://src/Weather/Earthquake.gd").new()
 
 enum Storm {
 	ERUPTION = 0,
+	EARTHQUAKE = 1,
 }
 var incoming_storm : int
 
@@ -66,10 +68,12 @@ func _unhandled_input(event):
 func _on_WeatherTimer_timeout():
 	$CanvasModulate.visible = true
 	# https://gdscript.com/solutions/random-numbers/
-	incoming_storm = randi() % 1
+	incoming_storm = randi() % 2
 	match incoming_storm:
 		Storm.ERUPTION:
-				$InterfaceLayer/WeatherAlert.alert(eruption.magnitude)
+			$InterfaceLayer/WeatherAlert.alert(eruption.magnitude)
+		Storm.EARTHQUAKE:
+			$InterfaceLayer/WeatherAlert.alert(earthquake.magnitude)	
 
 
 func _on_WeatherAlert_alert_finished():
@@ -82,6 +86,11 @@ func _on_WeatherAlert_alert_finished():
 				self.add_child(lp)
 				lp.connect("place_coin", $Level/Coins, "_on_LavaPiece_place_coin")
 				lp.connect("hit_player", self, "_on_LavaPiece_hit_player")
+			$Level/Player/Camera.add_trauma(0.3)
+		Storm.EARTHQUAKE:
+			$Level/Player/Camera.add_trauma(0.5 + (float(earthquake.magnitude) * 0.05))
+			$SFX/Rumble.play()
+			earthquake.start($Level/TileMap, get_tree().get_nodes_in_group("blocks"))
 	
 	$WeatherTimer.start()
 
