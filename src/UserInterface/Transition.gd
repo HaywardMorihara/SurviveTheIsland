@@ -12,3 +12,5 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 		get_tree().change_scene("res://src/UserInterface/Settings.tscn")
 	if _anim_name == "FadeGameOver":
 		get_tree().change_scene("res://src/UserInterface/GameOver.tscn")
+	if _anim_name == "FadeShop":
+		get_tree().change_scene("res://src/UserInterface/Shop.tscn")

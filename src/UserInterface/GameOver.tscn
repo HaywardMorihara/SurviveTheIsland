@@ -27,10 +27,10 @@ theme = ExtResource( 4 )
 text = "You Did Not Survive"
 
 [node name="CoinsCounter" parent="." instance=ExtResource( 5 )]
-margin_left = 305.0
-margin_top = 108.0
-margin_right = 405.0
-margin_bottom = 153.0
+margin_left = 304.0
+margin_top = 67.0
+margin_right = 404.0
+margin_bottom = 112.0
 
 [node name="Play" type="Button" parent="."]
 margin_left = 50.0
@@ -41,6 +41,17 @@ focus_neighbour_right = NodePath("../Credits")
 theme = ExtResource( 4 )
 action_mode = 0
 text = "Play Again"
+expand_icon = true
+
+[node name="Shop" type="Button" parent="."]
+margin_left = 270.0
+margin_top = 133.0
+margin_right = 450.0
+margin_bottom = 173.0
+focus_neighbour_right = NodePath("../Credits")
+theme = ExtResource( 4 )
+action_mode = 0
+text = "Shop"
 expand_icon = true
 
 [node name="Credits" type="Button" parent="."]
@@ -69,5 +80,6 @@ expand_icon = true
 [node name="Transition" parent="." instance=ExtResource( 1 )]
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
