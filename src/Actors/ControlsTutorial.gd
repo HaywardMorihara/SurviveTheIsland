@@ -13,10 +13,14 @@ var has_switched_block_type := false
 
 
 func _ready() -> void:
+	if OS.has_touchscreen_ui_hint():
+		return
 	$MovementKeys.visible = true
 
 
 func _on_Timer_timeout():
+	if OS.has_touchscreen_ui_hint():
+		return
 	$MovementKeys.visible = !has_moved
 	if has_moved:
 		$MouseAim.visible = !has_aimed

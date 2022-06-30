@@ -79,7 +79,16 @@ func _physics_process(_delta):
 		else:
 			sprite.scale.x = -1
 
-	$MouseAimer.look_at(get_global_mouse_position())
+	if OS.has_touchscreen_ui_hint():
+		var move := Vector2.ZERO
+		move.x = Input.get_axis("ui_left", "ui_right")
+		move.y = Input.get_axis("ui_up", "ui_down")
+		if move != Vector2.ZERO:
+			# 42 is the robot's width or something...
+			$MouseAimer/Aim.position = move * Vector2(42,42)
+	else:
+		$MouseAimer.look_at(get_global_mouse_position())
+	
 	$BlockPlacement.snap_to_grid($MouseAimer/Aim.global_position)
 
 	if Input.is_action_just_released("cycle_block_type_down"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/robot_demo.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/art/ui/button_xbox_digital_b_10.png" type="Texture" id=24]
 [ext_resource path="res://assets/art/ui/button_xbox_dpad_light_1.png" type="Texture" id=25]
 [ext_resource path="res://assets/art/ui/button_xbox_digital_a_10.png" type="Texture" id=26]
+[ext_resource path="res://addons/virutal_joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -415,21 +416,21 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="Jump" type="TouchScreenButton" parent="UI"]
-position = Vector2( 613, 213 )
+position = Vector2( 74.0001, 115 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 25 )
 action = "jump"
 visibility_mode = 1
 
 [node name="PlaceBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 613, 114 )
+position = Vector2( 621, 75 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 24 )
 action = "shoot"
 visibility_mode = 1
 
 [node name="RemoveBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 511, 221 )
+position = Vector2( 524, 108 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 26 )
 action = "remove_block"
@@ -443,6 +444,13 @@ normal = ExtResource( 8 )
 shape_visible = false
 action = "cycle_block_type_up"
 visibility_mode = 1
+
+[node name="Virtual joystick" parent="UI" instance=ExtResource( 27 )]
+margin_left = 601.0
+margin_top = -124.0
+margin_right = 801.0
+margin_bottom = 76.0
+clampzone_size = 25.0
 
 [node name="BlockCount" type="Control" parent="UI"]
 margin_left = 645.0

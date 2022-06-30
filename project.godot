@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Actors/Player.gd"
+}, {
+"base": "Control",
+"class": "VirtualJoystick",
+"language": "GDScript",
+"path": "res://addons/virutal_joystick/joystick/virtual_joystick.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
 "BlockPlacement": "",
 "Coin": "",
 "LavaPiece": "",
-"Player": ""
+"Player": "",
+"VirtualJoystick": ""
 }
 
 [application]
