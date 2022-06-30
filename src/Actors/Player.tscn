@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/robot_demo.png" type="Texture" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://assets/art/ui/button_xbox_digital_b_10.png" type="Texture" id=24]
 [ext_resource path="res://assets/art/ui/button_xbox_dpad_light_1.png" type="Texture" id=25]
 [ext_resource path="res://assets/art/ui/button_xbox_digital_a_10.png" type="Texture" id=26]
+[ext_resource path="res://addons/virutal_joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/art/coin/scrap_metal.png" type="Texture" id=28]
+[ext_resource path="res://assets/theme/fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -205,6 +208,9 @@ extents = Vector2( 10, 14 )
 
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=37]
+font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 13 )
@@ -415,21 +421,21 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="Jump" type="TouchScreenButton" parent="UI"]
-position = Vector2( 613, 213 )
+position = Vector2( 74.0001, 115 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 25 )
 action = "jump"
 visibility_mode = 1
 
 [node name="PlaceBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 613, 114 )
+position = Vector2( 621, 75 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 24 )
 action = "shoot"
 visibility_mode = 1
 
 [node name="RemoveBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 511, 221 )
+position = Vector2( 524, 108 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 26 )
 action = "remove_block"
@@ -443,6 +449,13 @@ normal = ExtResource( 8 )
 shape_visible = false
 action = "cycle_block_type_up"
 visibility_mode = 1
+
+[node name="Virtual joystick" parent="UI" instance=ExtResource( 27 )]
+margin_left = 601.0
+margin_top = -124.0
+margin_right = 801.0
+margin_bottom = 76.0
+clampzone_size = 25.0
 
 [node name="BlockCount" type="Control" parent="UI"]
 margin_left = 645.0
@@ -462,7 +475,7 @@ position = Vector2( 22, 23 )
 texture = ExtResource( 16 )
 hframes = 4
 vframes = 4
-frame = 6
+frame = 15
 
 [node name="SandBlockSprite" type="Sprite" parent="UI/BlockCount"]
 position = Vector2( 22, 23 )
@@ -478,6 +491,29 @@ text = "x0"
 
 [node name="CoinsCounter" parent="UI" instance=ExtResource( 17 )]
 
+[node name="CollectShipPartsTutorial" type="Control" parent="UI"]
+margin_left = 282.0
+margin_top = 89.0
+margin_right = 322.0
+margin_bottom = 129.0
+
+[node name="Label" type="Label" parent="UI/CollectShipPartsTutorial"]
+margin_left = 40.0
+margin_top = 4.0
+margin_right = 102.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 37 )
+text = "Collect"
+
+[node name="Sprite" type="Sprite" parent="UI/CollectShipPartsTutorial"]
+position = Vector2( 128, 9 )
+texture = ExtResource( 28 )
+
+[node name="Timer" type="Timer" parent="UI/CollectShipPartsTutorial"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="ControlsTutorial" type="Control" parent="UI"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -485,7 +521,6 @@ script = ExtResource( 18 )
 
 [node name="Timer" type="Timer" parent="UI/ControlsTutorial"]
 wait_time = 2.0
-autostart = true
 
 [node name="MovementKeys" type="Control" parent="UI/ControlsTutorial"]
 visible = false
@@ -599,5 +634,6 @@ frames = SubResource( 36 )
 playing = true
 
 [connection signal="block_placed" from="BlockPlacement" to="." method="_on_BlockPlacement_block_placed"]
+[connection signal="timeout" from="UI/CollectShipPartsTutorial/Timer" to="." method="_on_CollectTutorialTimer_timeout"]
 [connection signal="timeout" from="UI/ControlsTutorial/Timer" to="UI/ControlsTutorial" method="_on_Timer_timeout"]
 [connection signal="tween_completed" from="UI/ControlsTutorial/MouseAim/Sprite/Tween" to="UI/ControlsTutorial/MouseAim/Sprite" method="_on_Tween_tween_completed"]
