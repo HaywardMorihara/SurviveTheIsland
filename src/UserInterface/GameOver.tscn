@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/UserInterface/Transition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/background/volcano new and improved1.png" type="Texture" id=2]
 [ext_resource path="res://src/UserInterface/GameOver.gd" type="Script" id=3]
 [ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=4]
 [ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UserInterface/ScoreSubmission.gd" type="Script" id=6]
+[ext_resource path="res://assets/theme/fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
 
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
@@ -15,22 +20,72 @@ script = ExtResource( 3 )
 position = Vector2( 360, 160 )
 texture = ExtResource( 2 )
 
-[node name="YouDied" type="Label" parent="."]
+[node name="YourScoreLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -191.0
-margin_top = 23.0
-margin_right = 13.0
-margin_bottom = 42.0
-rect_scale = Vector2( 2, 2 )
+margin_left = -124.0
+margin_top = 29.0
+margin_right = 80.0
+margin_bottom = 48.0
 theme = ExtResource( 4 )
-text = "You Did Not Survive"
+text = "Your Score:"
 
 [node name="CoinsCounter" parent="." instance=ExtResource( 5 )]
-margin_left = 305.0
-margin_top = 108.0
-margin_right = 405.0
-margin_bottom = 153.0
+margin_left = 374.0
+margin_top = 16.0
+margin_right = 474.0
+margin_bottom = 61.0
+
+[node name="ScoreSubmission" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+
+[node name="NameLineEdit" type="LineEdit" parent="ScoreSubmission"]
+visible = false
+margin_left = 255.0
+margin_top = 79.0
+margin_right = 453.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 1 )
+placeholder_text = "Your name"
+
+[node name="SubmitScoreButton" type="Button" parent="ScoreSubmission"]
+visible = false
+margin_left = 261.0
+margin_top = 129.0
+margin_right = 441.0
+margin_bottom = 169.0
+focus_neighbour_right = NodePath("../../Credits")
+theme = ExtResource( 4 )
+action_mode = 0
+text = "Submit"
+expand_icon = true
+
+[node name="ScoreSubmissionStatus" type="RichTextLabel" parent="ScoreSubmission"]
+margin_left = 220.0
+margin_top = 77.0
+margin_right = 513.0
+margin_bottom = 119.0
+theme = ExtResource( 4 )
+text = "Loading..."
+
+[node name="Leaderboard" type="Button" parent="ScoreSubmission"]
+visible = false
+margin_left = 271.0
+margin_top = 126.0
+margin_right = 451.0
+margin_bottom = 166.0
+focus_neighbour_right = NodePath("../../Credits")
+theme = ExtResource( 4 )
+action_mode = 0
+text = "See Leaderboard"
+expand_icon = true
+
+[node name="LeaderboardTimeout" type="Timer" parent="ScoreSubmission"]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
 [node name="Play" type="Button" parent="."]
 margin_left = 50.0
@@ -68,6 +123,9 @@ expand_icon = true
 
 [node name="Transition" parent="." instance=ExtResource( 1 )]
 
+[connection signal="pressed" from="ScoreSubmission/SubmitScoreButton" to="ScoreSubmission" method="_on_SubmitScoreButton_pressed"]
+[connection signal="pressed" from="ScoreSubmission/Leaderboard" to="." method="_on_Leaderboard_pressed"]
+[connection signal="timeout" from="ScoreSubmission/LeaderboardTimeout" to="ScoreSubmission" method="_on_LeaderboardTimeout_timeout"]
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

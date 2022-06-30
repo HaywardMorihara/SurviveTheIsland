@@ -90,6 +90,6 @@ text = "Survive the Island"
 align = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Leaderboard" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Leaderboard" to="." method="_on_Leaderboard_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
