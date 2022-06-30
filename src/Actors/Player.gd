@@ -173,3 +173,8 @@ func _input(event):
 
 func collect_coin():
 	Global.coins_collected += 1
+
+
+func _on_CollectTutorialTimer_timeout():
+	$UI/ControlsTutorial/Timer.start()
+	$UI/CollectShipPartsTutorial.queue_free()

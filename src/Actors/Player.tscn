@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/robot_demo.png" type="Texture" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://assets/art/ui/button_xbox_dpad_light_1.png" type="Texture" id=25]
 [ext_resource path="res://assets/art/ui/button_xbox_digital_a_10.png" type="Texture" id=26]
 [ext_resource path="res://addons/virutal_joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/art/coin/scrap_metal.png" type="Texture" id=28]
+[ext_resource path="res://assets/theme/fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -206,6 +208,9 @@ extents = Vector2( 10, 14 )
 
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=37]
+font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 13 )
@@ -486,6 +491,29 @@ text = "x0"
 
 [node name="CoinsCounter" parent="UI" instance=ExtResource( 17 )]
 
+[node name="CollectShipPartsTutorial" type="Control" parent="UI"]
+margin_left = 282.0
+margin_top = 89.0
+margin_right = 322.0
+margin_bottom = 129.0
+
+[node name="Label" type="Label" parent="UI/CollectShipPartsTutorial"]
+margin_left = 40.0
+margin_top = 4.0
+margin_right = 102.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 37 )
+text = "Collect"
+
+[node name="Sprite" type="Sprite" parent="UI/CollectShipPartsTutorial"]
+position = Vector2( 128, 9 )
+texture = ExtResource( 28 )
+
+[node name="Timer" type="Timer" parent="UI/CollectShipPartsTutorial"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="ControlsTutorial" type="Control" parent="UI"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -493,7 +521,6 @@ script = ExtResource( 18 )
 
 [node name="Timer" type="Timer" parent="UI/ControlsTutorial"]
 wait_time = 2.0
-autostart = true
 
 [node name="MovementKeys" type="Control" parent="UI/ControlsTutorial"]
 visible = false
@@ -511,18 +538,17 @@ text = "Move:"
 [node name="JumpKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 358, 73 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 
 [node name="LeftMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 324, 101 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="RightMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 391, 101 )
 frames = SubResource( 23 )
-frame = 1
 playing = true
 
 [node name="MouseAim" type="Control" parent="UI/ControlsTutorial"]
@@ -563,7 +589,6 @@ text = "Pickup Blocks:"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseRightClick"]
 position = Vector2( 68, 54 )
 frames = SubResource( 28 )
-frame = 1
 playing = true
 
 [node name="MouseLeftClick" type="Control" parent="UI/ControlsTutorial"]
@@ -584,6 +609,7 @@ text = "Place Blocks"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseLeftClick"]
 position = Vector2( 43, 45 )
 frames = SubResource( 32 )
+frame = 1
 playing = true
 
 [node name="MouseScroll" type="Control" parent="UI/ControlsTutorial"]
@@ -604,8 +630,10 @@ text = "Change Block Type:"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseScroll"]
 position = Vector2( 331, 79 )
 frames = SubResource( 36 )
+frame = 1
 playing = true
 
 [connection signal="block_placed" from="BlockPlacement" to="." method="_on_BlockPlacement_block_placed"]
+[connection signal="timeout" from="UI/CollectShipPartsTutorial/Timer" to="." method="_on_CollectTutorialTimer_timeout"]
 [connection signal="timeout" from="UI/ControlsTutorial/Timer" to="UI/ControlsTutorial" method="_on_Timer_timeout"]
 [connection signal="tween_completed" from="UI/ControlsTutorial/MouseAim/Sprite/Tween" to="UI/ControlsTutorial/MouseAim/Sprite" method="_on_Tween_tween_completed"]
