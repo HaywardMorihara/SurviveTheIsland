@@ -100,3 +100,12 @@ Tutorial for setting it up: https://dev.to/jeremyckahn/automating-godot-game-rel
 Butler:
 * https://github.com/marketplace/actions/butler-push?version=v1.0.2
 * https://github.com/manleydev/butler-publish-itchio-action
+
+## SilentWolf Leaderboard
+
+Leaderboard built using SilentWolf.
+
+See SilentWold leaderboard documentation [here](https://silentwolf.com/leaderboard).
+
+* Need the API Key in order for this to work locally
+* The order of Autoload is important - `SilentWolf.gd` must come before `Global.gd`

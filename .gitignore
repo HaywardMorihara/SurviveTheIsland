@@ -8,3 +8,6 @@ export.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+
+# Keys
+api_key.env

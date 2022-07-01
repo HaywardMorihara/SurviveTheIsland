@@ -58,6 +58,7 @@ target_fps="60"
 
 [autoload]
 
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Global="*res://src/Global.gd"
 
 [debug]
