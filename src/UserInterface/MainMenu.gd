@@ -9,8 +9,8 @@ func _on_Play_pressed():
 
 
 
-func _on_Options_pressed():
-	$Transition/Background/AnimationPlayer.play("FadeSettings")
+func _on_Leaderboard_pressed():
+	$Transition/Background/AnimationPlayer.play("FadeLeaderboard")
 
 
 

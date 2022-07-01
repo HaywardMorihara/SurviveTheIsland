@@ -8,8 +8,8 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 		get_tree().change_scene("res://src/UserInterface/Credits.tscn")
 	if _anim_name == "FadeMainMenu":
 		get_tree().change_scene("res://src/UserInterface/MainMenu.tscn")
-	if _anim_name == "FadeSettings":
-		get_tree().change_scene("res://src/UserInterface/Settings.tscn")
+	if _anim_name == "FadeLeaderboard":
+		get_tree().change_scene("res://src/UserInterface/LeaderboardMenu.tscn")
 	if _anim_name == "FadeGameOver":
 		get_tree().change_scene("res://src/UserInterface/GameOver.tscn")
 	if _anim_name == "FadeShop":

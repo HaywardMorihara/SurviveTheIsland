@@ -1,9 +1,9 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/robot_demo.png" type="Texture" id=2]
 [ext_resource path="res://assets/audio/sfx/jump.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/sfx/shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/BlockPlace.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/art/ui/button_xbox_dpad_light_2.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/ui/button_xbox_dpad_light_4.png" type="Texture" id=6]
 [ext_resource path="res://src/Actors/Camera.gd" type="Script" id=7]
@@ -29,6 +29,8 @@
 [ext_resource path="res://addons/virutal_joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/art/coin/scrap_metal.png" type="Texture" id=28]
 [ext_resource path="res://assets/theme/fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=29]
+[ext_resource path="res://assets/audio/sfx/ItemSwitch.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/audio/sfx/BlockPickup.mp3" type="AudioStream" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -346,6 +348,7 @@ script = ExtResource( 9 )
 [node name="Shoot" type="AudioStreamPlayer2D" parent="BlockPlacement"]
 position = Vector2( -30.6589, -6.13176 )
 stream = ExtResource( 4 )
+volume_db = 20.0
 
 [node name="Cooldown" type="Timer" parent="BlockPlacement"]
 process_mode = 0
@@ -364,7 +367,7 @@ position = Vector2( 0, -14 )
 texture = ExtResource( 2 )
 hframes = 16
 vframes = 2
-frame = 16
+frame = 22
 
 [node name="MouseAimer" type="Node2D" parent="."]
 position = Vector2( 0, -14 )
@@ -632,6 +635,13 @@ text = "Change Block Type:"
 position = Vector2( 331, 79 )
 frames = SubResource( 36 )
 playing = true
+
+[node name="CycleBlock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+
+[node name="BlockPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+volume_db = 3.0
 
 [connection signal="block_placed" from="BlockPlacement" to="." method="_on_BlockPlacement_block_placed"]
 [connection signal="timeout" from="UI/CollectShipPartsTutorial/Timer" to="." method="_on_CollectTutorialTimer_timeout"]

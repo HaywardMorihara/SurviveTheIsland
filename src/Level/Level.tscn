@@ -27,6 +27,7 @@ tile_data = PoolIntArray( 524289, 15, 0, 524290, 15, 0, 524291, 15, 0, 524292, 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -20.0
 autoplay = true
 script = ExtResource( 9 )
 
