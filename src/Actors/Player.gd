@@ -93,8 +93,10 @@ func _physics_process(_delta):
 
 	if Input.is_action_just_released("cycle_block_type_down"):
 		block_placer.cycle_block_type_down()
+		$CycleBlock.play()
 	if Input.is_action_just_released("cycle_block_type_up"):
 		block_placer.cycle_block_type_up()
+		$CycleBlock.play()
 	if Input.is_action_just_released("cycle_block_type_up") or Input.is_action_just_released("cycle_block_type_down"):
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 		$UI.update_block_type(block_placer.current_block_type)
@@ -110,6 +112,7 @@ func _physics_process(_delta):
 		is_shooting = block_placer.remove()
 		if is_shooting:
 			$UI/ControlsTutorial.has_picked_up_block = true
+			$BlockPickup.play()
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 
 	var animation = get_new_animation(is_shooting)

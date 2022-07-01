@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BlockPickup.mp3-a6a1c3f6b7635511b68c59133e1f031e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/BlockPickup.mp3"
+dest_files=[ "res://.import/BlockPickup.mp3-a6a1c3f6b7635511b68c59133e1f031e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -31,13 +31,13 @@ margin_left = 190.0
 margin_top = 180.0
 margin_right = 340.0
 margin_bottom = 210.0
-focus_neighbour_right = NodePath("../Options")
+focus_neighbour_right = NodePath("../Leaderboard")
 focus_neighbour_bottom = NodePath("../Credits")
 theme = ExtResource( 4 )
 action_mode = 0
 text = "Play"
 
-[node name="Options" type="Button" parent="."]
+[node name="Leaderboard" type="Button" parent="."]
 margin_left = 410.0
 margin_top = 180.0
 margin_right = 560.0
@@ -46,7 +46,7 @@ focus_neighbour_left = NodePath("../Play")
 focus_neighbour_bottom = NodePath("../Exit")
 theme = ExtResource( 4 )
 action_mode = 0
-text = "Options"
+text = "Leaderboard"
 expand_icon = true
 
 [node name="Credits" type="Button" parent="."]
@@ -67,7 +67,7 @@ margin_top = 240.0
 margin_right = 560.0
 margin_bottom = 270.0
 focus_neighbour_left = NodePath("../Credits")
-focus_neighbour_top = NodePath("../Options")
+focus_neighbour_top = NodePath("../Leaderboard")
 theme = ExtResource( 4 )
 action_mode = 0
 text = "Exit"
@@ -90,6 +90,6 @@ text = "Survive the Island"
 align = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Leaderboard" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

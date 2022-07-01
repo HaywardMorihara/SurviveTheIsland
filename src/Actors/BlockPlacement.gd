@@ -76,7 +76,7 @@ func remove():
 					block_inventory[group] += 1
 					block.queue_free()
 					break
-	
+		
 		timer.start()
 		return true
 		
