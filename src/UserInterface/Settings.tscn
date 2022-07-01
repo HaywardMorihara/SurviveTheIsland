@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/theme/STI_Theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/audio/music/Gulls.wav" type="AudioStream" id=5]
 
-[node name="Settings" type="Control"]
+[node name="Leaderboard" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -25,9 +25,9 @@ margin_top = -106.5
 margin_right = 151.0
 margin_bottom = 0.5
 theme = ExtResource( 4 )
-text = "           Settings
-
-No Settings for you!"
+text = "          Leaderboard
+		
+		    You are #1"
 
 [node name="Transition" parent="." instance=ExtResource( 1 )]
 
