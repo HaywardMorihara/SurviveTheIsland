@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/art/coin/scrap_metal.png" type="Texture" id=28]
 [ext_resource path="res://assets/theme/fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=29]
 [ext_resource path="res://assets/audio/sfx/ItemSwitch.wav" type="AudioStream" id=30]
-[ext_resource path="res://assets/audio/sfx/BlockPickup.mp3" type="AudioStream" id=31]
+[ext_resource path="res://assets/audio/sfx/BlockPickup.wav" type="AudioStream" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
