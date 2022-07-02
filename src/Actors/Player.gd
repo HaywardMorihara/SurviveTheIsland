@@ -86,6 +86,11 @@ func _physics_process(_delta):
 		if move != Vector2.ZERO:
 			# 42 is the robot's width or something...
 			$MouseAimer/Aim.position = move * Vector2(42,42)
+	elif Input.get_joy_name(0):
+		var look_vector = Vector2(0, 0)
+		look_vector.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
+		look_vector.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
+		$MouseAimer/Aim.position = look_vector * Vector2(42,42)
 	else:
 		$MouseAimer.look_at(get_global_mouse_position())
 	
@@ -109,10 +114,10 @@ func _physics_process(_delta):
 			$UI/ControlsTutorial.has_placed_block = true
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 	elif Input.is_action_just_pressed("remove_block" + action_suffix):
+		$BlockPickup.play()
 		is_shooting = block_placer.remove()
 		if is_shooting:
 			$UI/ControlsTutorial.has_picked_up_block = true
-			$BlockPickup.play()
 		$UI.update_block_count(block_placer.current_block_type, block_placer.get_current_block_count())
 
 	var animation = get_new_animation(is_shooting)
