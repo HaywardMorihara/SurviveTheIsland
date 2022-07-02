@@ -54,9 +54,8 @@ func remove():
 		return false
 	
 	var overlapping_bodies := get_overlapping_bodies()
-	if overlapping_bodies:
-		# TODO Could there be > 1 overlapping_bodies?
-		if overlapping_bodies[0] is TileMap:
+	for overlapping_body in overlapping_bodies:
+		if overlapping_body is TileMap:
 			var tile_map = overlapping_bodies[0]
 			var tile_pos = tile_map.world_to_map(global_position)
 			var cell_id = tile_map.get_cellv(tile_pos)
@@ -66,19 +65,17 @@ func remove():
 			if tile_name:
 				block_inventory[tile_name] += 1
 				tile_map.set_cell(tile_pos.x, tile_pos.y, -1)
-		elif overlapping_bodies[0] is PhysicsBody2D:
-			var block = overlapping_bodies[0]
-			# NOTE: Making an assumption about index in groups array...
-			# probably shouldn't be but it's more performant. We can adjust if needed
+				timer.start()
+				return true
+		elif overlapping_body.is_in_group("blocks"):
+			var block = overlapping_body
 			var groups = block.get_groups()
 			for group in groups:
 				if group.match("*_block"):
 					block_inventory[group] += 1
 					block.queue_free()
-					break
-		
-		timer.start()
-		return true
+					timer.start()
+					return true
 		
 	return false
 
