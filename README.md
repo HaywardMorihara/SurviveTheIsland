@@ -87,6 +87,9 @@ they contain a lot of comments that explain how each class works.
 > - Pixel art visuals.
 > - Sound effects and music.
 
+### Other Notes
+* [Virtual keyboard for mobile HTML](https://godotengine.org/article/godot-web-progress-report-7)
+
 ## CI
 Using https://github.com/marketplace/actions/godot-ci
 * https://github.com/abarichello/godot-ci 
