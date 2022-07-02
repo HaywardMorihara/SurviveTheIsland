@@ -29,7 +29,6 @@ scroll_base_scale = Vector2( 0.4, 0 )
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -20.0
-autoplay = true
 script = ExtResource( 9 )
 
 [node name="Blocks" type="Node2D" parent="."]
