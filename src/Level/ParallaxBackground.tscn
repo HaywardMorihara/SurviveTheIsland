@@ -13,5 +13,5 @@ texture = ExtResource( 7 )
 [node name="Trees" type="ParallaxLayer" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Trees"]
-position = Vector2( 360, 220 )
+position = Vector2( 360, 122 )
 texture = ExtResource( 1 )

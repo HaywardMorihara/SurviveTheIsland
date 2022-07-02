@@ -11,5 +11,5 @@ dest_files=[ "res://.import/BlockPickup.mp3-a6a1c3f6b7635511b68c59133e1f031e.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
