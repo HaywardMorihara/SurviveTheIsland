@@ -17,7 +17,7 @@ font_data = SubResource( 1 )
 font_path = "res://assets/theme/fonts/SpecialElite-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=4]
-size = 24
+size = 20
 font_data = SubResource( 3 )
 
 [node name="Credits" type="Control"]
@@ -34,13 +34,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 251.0
-margin_top = 9.0
-margin_right = 468.0
-margin_bottom = 311.0
+margin_left = 160.0
+margin_right = 560.0
+margin_bottom = 319.0
+rect_min_size = Vector2( 400, 0 )
 
 [node name="Credits" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 217.0
+margin_right = 400.0
 margin_bottom = 31.0
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 2 )
@@ -50,72 +50,79 @@ valign = 1
 
 [node name="Margin" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 35.0
-margin_right = 217.0
+margin_right = 400.0
 margin_bottom = 65.0
 custom_constants/margin_bottom = 30
 
-[node name="Development Team" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 69.0
-margin_right = 217.0
-margin_bottom = 122.0
+margin_right = 400.0
+margin_bottom = 319.0
+rect_min_size = Vector2( 400, 250 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ScrollContainer"]
+margin_right = 300.0
+margin_bottom = 1178.0
+
+[node name="DevelopmentTeamTitle" type="Label" parent="CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 45.0
 size_flags_horizontal = 5
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 4 )
-text = "Development Team
+text = "Development Team:
 "
 align = 1
 valign = 1
 
-[node name="Murphy\'s Dad" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 126.0
-margin_right = 217.0
-margin_bottom = 167.0
+[node name="DevelopmentTeam" type="RichTextLabel" parent="CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 300.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 0, 100 )
+theme = ExtResource( 4 )
+text = "MurphysDad
+ScrapyNinja
+00her0
+imortalicecream"
+
+[node name="SpecialThanksTitle" type="Label" parent="CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 153.0
+margin_right = 300.0
+margin_bottom = 174.0
 size_flags_horizontal = 5
 theme = ExtResource( 4 )
-text = "Murphy's Dad
-"
+custom_fonts/font = SubResource( 4 )
+text = "Special Thanks:"
 align = 1
 valign = 1
 
-[node name="ScrapyNinja" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 171.0
-margin_right = 217.0
-margin_bottom = 212.0
-size_flags_horizontal = 5
+[node name="SpecialThanks" type="RichTextLabel" parent="CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 178.0
+margin_right = 300.0
+margin_bottom = 1178.0
+rect_min_size = Vector2( 300, 1000 )
 theme = ExtResource( 4 )
-text = "ScrapyNinja
-"
-align = 1
-valign = 1
+text = "2D Platformer Demo Buiilt Off of - https://github.com/godotengine/godot-demo-projects/tree/3.4-b0d4a7c/2d/platformer
 
-[node name="00Her0" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 216.0
-margin_right = 217.0
-margin_bottom = 257.0
-size_flags_horizontal = 5
-theme = ExtResource( 4 )
-text = "00her0
-"
-align = 1
-valign = 1
+Leaderboard APIs - https://silentwolf.com/
 
-[node name="imortalicecream" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 261.0
-margin_right = 217.0
-margin_bottom = 302.0
-size_flags_horizontal = 5
-theme = ExtResource( 4 )
-text = "imortalicecream
-"
-align = 1
-valign = 1
+Virtual Joystick - https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot
+
+Key Icons - https://gerald-burke.itch.io/geralds-keys
+
+Music - https://opengameart.org/content/helldrake
+
+Alarm SFX - https://opengameart.org/content/short-alarm
+
+Rumbling SFX - https://opengameart.org/content/rumble-fx"
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 show_behind_parent = true
-margin_left = 251.0
-margin_top = 9.0
-margin_right = 468.0
-margin_bottom = 311.0
+margin_left = 360.0
+margin_top = 160.0
+margin_right = 360.0
+margin_bottom = 160.0
 color = Color( 0.52549, 0.192157, 0.403922, 0.776471 )
 
 [node name="MainMenu" type="Button" parent="."]
