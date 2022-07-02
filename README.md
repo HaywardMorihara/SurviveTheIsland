@@ -109,3 +109,8 @@ See SilentWold leaderboard documentation [here](https://silentwolf.com/leaderboa
 
 * Need the API Key in order for this to work locally
 * The order of Autoload is important - `SilentWolf.gd` must come before `Global.gd`
+* Make sure to to bundle the API key for the build (`export_presets.cfg`):
+  ```
+  include_filter="api_key.env"
+  ```
+* If you have a build process, don't forget to ensure that the API key is included in it!
