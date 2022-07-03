@@ -28,7 +28,10 @@ jobs:
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
 
       - name: Web Build
+        env:
+          SILENT_WOLF_API_KEY: ${{ secrets.SILENT_WOLF_API_KEY }}
         run: |
+          echo $SILENT_WOLF_API_KEY >> api_key.env
           mkdir -v -p build/web
           godot -v --export "HTML5" ./build/web/index.html
 
