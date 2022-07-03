@@ -111,10 +111,10 @@ text = "Credits"
 expand_icon = true
 
 [node name="Shop" type="Button" parent="."]
-margin_left = 270.0
-margin_top = 144.0
-margin_right = 450.0
-margin_bottom = 184.0
+margin_left = 518.0
+margin_top = 16.0
+margin_right = 698.0
+margin_bottom = 56.0
 focus_neighbour_left = NodePath("../Play")
 focus_neighbour_right = NodePath("../Exit")
 theme = ExtResource( 4 )
