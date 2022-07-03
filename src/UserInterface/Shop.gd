@@ -1,8 +1,5 @@
 extends Control
 
-func _ready():
-	Global.coins_collected = 1000
-
 func _on_Stone_pressed():
 	if Global.coins_collected >= 25 and not Global.upgrades['Stone']:
 		Global.coins_collected -= 25
