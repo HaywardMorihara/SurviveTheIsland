@@ -15,6 +15,7 @@ onready var sprite = $Sprite
 onready var sound_jump = $Jump
 onready var block_placer = get_node(@"BlockPlacement")
 
+onready var aimer_offset = $MouseAimer/Aim.position.x
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
@@ -78,19 +79,18 @@ func _physics_process(_delta):
 			sprite.scale.x = 1
 		else:
 			sprite.scale.x = -1
-
+ 
 	if OS.has_touchscreen_ui_hint():
 		var move := Vector2.ZERO
 		move.x = Input.get_axis("ui_left", "ui_right")
 		move.y = Input.get_axis("ui_up", "ui_down")
 		if move != Vector2.ZERO:
-			# 42 is the robot's width or something...
-			$MouseAimer/Aim.position = move * Vector2(42,42)
+			$MouseAimer/Aim.position = move * Vector2(aimer_offset, aimer_offset)
 	elif Input.get_joy_name(0):
 		var look_vector = Vector2(0, 0)
 		look_vector.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
 		look_vector.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
-		$MouseAimer/Aim.position = look_vector * Vector2(42,42)
+		$MouseAimer/Aim.position = look_vector * Vector2(aimer_offset, aimer_offset)
 	else:
 		$MouseAimer.look_at(get_global_mouse_position())
 	
