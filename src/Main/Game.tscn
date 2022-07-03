@@ -99,7 +99,15 @@ stream = ExtResource( 8 )
 [node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
 
 [node name="WeatherTimer" type="Timer" parent="."]
-wait_time = 40.0
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="EruptionTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="InitialEruptionDelay" type="Timer" parent="."]
+wait_time = 30.0
 one_shot = true
 autostart = true
 
@@ -121,3 +129,5 @@ volume_db = 13.109
 [connection signal="timeout" from="InterfaceLayer/WeatherAlert/Timer" to="InterfaceLayer/WeatherAlert" method="_on_Timer_timeout"]
 [connection signal="finished" from="InterfaceLayer/WeatherAlert/AudioStreamPlayer" to="InterfaceLayer/WeatherAlert" method="_on_AudioStreamPlayer_finished"]
 [connection signal="timeout" from="WeatherTimer" to="." method="_on_WeatherTimer_timeout"]
+[connection signal="timeout" from="EruptionTimer" to="." method="_on_EruptionTimer_timeout"]
+[connection signal="timeout" from="InitialEruptionDelay" to="." method="_on_InitialEruptionDelay_timeout"]
