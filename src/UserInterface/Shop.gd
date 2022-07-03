@@ -1,17 +1,25 @@
 extends Control
 
 func _ready():
-	Global.coins_collected = 500
+	Global.coins_collected = 2000
 
 func _on_Stone_pressed():
-	if Global.coins_collected > 50:
+	if Global.coins_collected >= 25 and not Global.upgrades['Stone']:
 		Global.coins_collected -= 50
 		Global.upgrades['Stone'] = true
 
 
 func _on_BiggerIsland_pressed():
-	pass # Replace with function body.
+	if Global.coins_collected >= 50 and not Global.upgrades['BiggerIsland']:
+		Global.coins_collected -= 100
+		Global.upgrades['BiggerIsland'] = true
 
 
 func _on_OneFreeHit_pressed():
-	pass # Replace with function body.
+	if Global.coins_collected >= 100 and not Global.upgrades['FreeHit']:
+		Global.coins_collected -= 200
+		Global.upgrades['FreeHit'] = true
+
+
+func _on_Back_pressed():
+	$Transition/Background/AnimationPlayer.play("FadeGameOver")

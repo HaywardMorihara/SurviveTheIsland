@@ -22,6 +22,7 @@ var coins_collected := 0
 
 func _ready():
 	Global.coins_collected = 0
+	Global.upgrades['FreeHitUsed'] = false
 
 
 func _init():
@@ -100,4 +101,9 @@ func _on_Level_player_out_of_bounds():
 
 
 func _on_LavaPiece_hit_player():
-	animation_player.play("FadeGameOver")
+	if Global.upgrades['FreeHit'] and not Global.upgrades['FreeHitUsed']:
+		Global.upgrades['FreeHitUsed'] = true
+		print('Free Hit Spent')
+	else:
+		print("No Free Hit")
+		animation_player.play("FadeGameOver")

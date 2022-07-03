@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/background/volcano new and improved1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/UserInterface/StoneCost.gd" type="Script" id=5]
 [ext_resource path="res://src/UserInterface/FreeHitCost.gd" type="Script" id=6]
 [ext_resource path="res://src/UserInterface/IslandCost.gd" type="Script" id=7]
+[ext_resource path="res://src/UserInterface/Transition.tscn" type="PackedScene" id=8]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -30,9 +31,9 @@ align = 1
 
 [node name="Stone" type="Button" parent="."]
 margin_left = 16.0
-margin_top = 160.0
+margin_top = 184.0
 margin_right = 208.0
-margin_bottom = 272.0
+margin_bottom = 296.0
 focus_neighbour_right = NodePath("../Credits")
 theme = ExtResource( 3 )
 action_mode = 0
@@ -49,9 +50,9 @@ script = ExtResource( 5 )
 
 [node name="BiggerIsland" type="Button" parent="."]
 margin_left = 264.0
-margin_top = 160.0
+margin_top = 184.0
 margin_right = 456.0
-margin_bottom = 272.0
+margin_bottom = 296.0
 focus_neighbour_right = NodePath("../Credits")
 theme = ExtResource( 3 )
 action_mode = 0
@@ -67,9 +68,9 @@ script = ExtResource( 7 )
 
 [node name="OneFreeHit" type="Button" parent="."]
 margin_left = 512.0
-margin_top = 160.0
+margin_top = 184.0
 margin_right = 704.0
-margin_bottom = 272.0
+margin_bottom = 296.0
 focus_neighbour_right = NodePath("../Credits")
 theme = ExtResource( 3 )
 action_mode = 0
@@ -90,6 +91,21 @@ margin_top = 88.0
 margin_right = 404.0
 margin_bottom = 133.0
 
+[node name="Back" type="Button" parent="."]
+margin_left = 264.0
+margin_top = 136.0
+margin_right = 456.0
+margin_bottom = 176.0
+focus_neighbour_left = NodePath("../Play")
+focus_neighbour_right = NodePath("../Exit")
+theme = ExtResource( 3 )
+action_mode = 0
+text = "Back"
+expand_icon = true
+
+[node name="Transition" parent="." instance=ExtResource( 8 )]
+
 [connection signal="pressed" from="Stone" to="." method="_on_Stone_pressed"]
 [connection signal="pressed" from="BiggerIsland" to="." method="_on_BiggerIsland_pressed"]
 [connection signal="pressed" from="OneFreeHit" to="." method="_on_OneFreeHit_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

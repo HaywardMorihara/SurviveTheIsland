@@ -110,6 +110,18 @@ action_mode = 0
 text = "Credits"
 expand_icon = true
 
+[node name="Shop" type="Button" parent="."]
+margin_left = 270.0
+margin_top = 144.0
+margin_right = 450.0
+margin_bottom = 184.0
+focus_neighbour_left = NodePath("../Play")
+focus_neighbour_right = NodePath("../Exit")
+theme = ExtResource( 4 )
+action_mode = 0
+text = "Shop"
+expand_icon = true
+
 [node name="Exit" type="Button" parent="."]
 margin_left = 490.0
 margin_top = 200.0
@@ -128,4 +140,5 @@ expand_icon = true
 [connection signal="timeout" from="ScoreSubmission/LeaderboardTimeout" to="ScoreSubmission" method="_on_LeaderboardTimeout_timeout"]
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

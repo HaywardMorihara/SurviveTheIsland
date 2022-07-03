@@ -8,7 +8,7 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Label.set_text("100")
+	$Label.set_text("50")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

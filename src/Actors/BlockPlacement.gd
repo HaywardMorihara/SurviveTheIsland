@@ -20,7 +20,12 @@ var block_inventory := {
 	DIRT_BLOCK_TYPE: 0,
 	SAND_BLOCK_TYPE: 0,
 }
+
 var current_block_type := SAND_BLOCK_TYPE
+
+func _ready():
+	if Global.upgrades['Stone']:
+		block_inventory[STONE_BLOCK_TYPE] = 15
 
 # This method is only called by Player.gd.
 func place():
