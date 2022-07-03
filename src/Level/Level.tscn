@@ -1,12 +1,30 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Level/Coins.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/music/helldrake.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/art/blocks/lava.png" type="Texture" id=4]
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=5]
+[ext_resource path="res://assets/art/blocks/single_lava.png" type="Texture" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/music/helldrake.ogg" type="AudioStream" id=8]
 [ext_resource path="res://src/Level/Music.gd" type="Script" id=9]
+
+[sub_resource type="TileSet" id=2]
+0/name = "single_lava.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1200, 10 )
@@ -36,7 +54,7 @@ tile_data = PoolIntArray( 3211256, 1610612751, 0, 3211257, 1610612751, 0, 321125
 scroll_base_scale = Vector2( 0.4, 0 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 8 )
 volume_db = -20.0
 autoplay = true
 script = ExtResource( 9 )
@@ -91,10 +109,21 @@ position = Vector2( 223, 32 )
 [node name="Coin31" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( -87, 38 )
 
+[node name="TileMap2" type="TileMap" parent="."]
+position = Vector2( 320, 1536 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65498, 0, 0, 65499, 0, 0, 65500, 0, 0, 65501, 0, 0, 65502, 0, 0, 65503, 0, 0, 65504, 0, 0, 65505, 0, 0, 65506, 0, 0, 65507, 0, 0, 65508, 0, 0, 65509, 0, 0, 65510, 0, 0, 65511, 0, 0, 65512, 0, 0, 65513, 0, 0, 65514, 0, 0, 65515, 0, 0, 65516, 0, 0, 65517, 0, 0, 65518, 0, 0, 65519, 0, 0, 65520, 0, 0, 65521, 0, 0, 65522, 0, 0, 65523, 0, 0, 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0 )
+
 [node name="FallDeath" type="Area2D" parent="."]
 position = Vector2( 332, 1550 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDeath"]
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="FallDeath"]
+position = Vector2( -12, 2 )
+texture = ExtResource( 4 )
 
 [connection signal="body_entered" from="FallDeath" to="." method="_on_FallDeath_body_entered"]

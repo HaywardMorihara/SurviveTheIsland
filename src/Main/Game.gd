@@ -19,6 +19,8 @@ var incoming_storm : int
 
 var coins_collected := 0
 
+var lava_rise_counter := 0
+
 
 func _ready():
 	Global.coins_collected = 0
@@ -29,6 +31,15 @@ func _init():
 	OS.min_window_size = OS.window_size
 	OS.max_window_size = OS.get_screen_size()
 
+func _process(delta):
+	if lava_rise_counter > 31:
+		lava_rise_counter = 0
+	$Level/FallDeath.position.y -= 0.1
+	if lava_rise_counter == 0:
+		for i in range(-38, 37):
+			$Level/TileMap2.set_cell(i,($Level/FallDeath.position.y-1550)/32,0)
+		print($Level/FallDeath.position.y)
+	lava_rise_counter += 1
 
 func _notification(what):
 	if what == NOTIFICATION_WM_QUIT_REQUEST:

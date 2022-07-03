@@ -398,18 +398,17 @@ text = "Move:"
 [node name="JumpKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 358, 73 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 
 [node name="LeftMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 324, 101 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="RightMoveKey" type="AnimatedSprite" parent="UI/ControlsTutorial/MovementKeys"]
 position = Vector2( 391, 101 )
 frames = SubResource( 23 )
-frame = 1
 playing = true
 
 [node name="MouseAim" type="Control" parent="UI/ControlsTutorial"]
@@ -450,7 +449,6 @@ text = "Pickup Blocks:"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseRightClick"]
 position = Vector2( 68, 54 )
 frames = SubResource( 28 )
-frame = 1
 playing = true
 
 [node name="MouseLeftClick" type="Control" parent="UI/ControlsTutorial"]
@@ -471,6 +469,7 @@ text = "Place Blocks"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseLeftClick"]
 position = Vector2( 43, 45 )
 frames = SubResource( 32 )
+frame = 1
 playing = true
 
 [node name="MouseScroll" type="Control" parent="UI/ControlsTutorial"]
@@ -491,6 +490,7 @@ text = "Change Block Type:"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/ControlsTutorial/MouseScroll"]
 position = Vector2( 331, 79 )
 frames = SubResource( 36 )
+frame = 1
 playing = true
 
 [node name="CycleBlock" type="AudioStreamPlayer" parent="."]
