@@ -6,9 +6,11 @@ signal player_out_of_bounds
 const LIMIT_LEFT = -315
 const LIMIT_TOP = -250
 const LIMIT_RIGHT = 955
-const LIMIT_BOTTOM = 1550
+const LIMIT_BOTTOM = 2112
 
 func _ready():
+	if Global.upgrades['BiggerIsland']:
+		bigger_island()
 	for child in get_children():
 		if child is Player:
 			var camera = child.get_node("Camera")
@@ -16,6 +18,10 @@ func _ready():
 			camera.limit_top = LIMIT_TOP
 			camera.limit_right = LIMIT_RIGHT
 			camera.limit_bottom = LIMIT_BOTTOM
+
+func bigger_island():
+	$TileMapExtended.visible = true
+	$FallDeath.position.y = 2112
 
 
 func _on_Player_block_placed(block):

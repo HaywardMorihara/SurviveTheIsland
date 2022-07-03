@@ -103,7 +103,5 @@ func _on_Level_player_out_of_bounds():
 func _on_LavaPiece_hit_player():
 	if Global.upgrades['FreeHit'] and not Global.upgrades['FreeHitUsed']:
 		Global.upgrades['FreeHitUsed'] = true
-		print('Free Hit Spent')
 	else:
-		print("No Free Hit")
 		animation_player.play("FadeGameOver")
