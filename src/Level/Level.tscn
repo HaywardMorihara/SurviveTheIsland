@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/blocks/single_lava.png" type="Texture" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/music/helldrake.ogg" type="AudioStream" id=8]
 [ext_resource path="res://src/Level/Music.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=2]
@@ -53,7 +54,7 @@ tile_data = PoolIntArray( 3211256, 1610612751, 0, 3211257, 1610612751, 0, 321125
 scroll_base_scale = Vector2( 0.4, 0 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 8 )
 volume_db = -20.0
 autoplay = true
 script = ExtResource( 9 )
