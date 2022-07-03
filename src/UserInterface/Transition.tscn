@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/UserInterface/Transition.gd" type="Script" id=1]
 
@@ -77,6 +77,21 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "FadeShop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -107,6 +122,7 @@ anims/FadeCredits = SubResource( 3 )
 anims/FadeGameOver = SubResource( 6 )
 anims/FadeLeaderboard = SubResource( 5 )
 anims/FadeMainMenu = SubResource( 4 )
+anims/FadeShop = SubResource( 7 )
 anims/RESET = SubResource( 2 )
 
 [connection signal="animation_finished" from="Background/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

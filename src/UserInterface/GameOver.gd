@@ -15,6 +15,8 @@ func _on_Credits_pressed():
 func _on_Exit_pressed():
 	get_tree().quit()
 
+func _on_Shop_pressed():
+	$Transition/Background/AnimationPlayer.play("FadeShop")
 
 func _on_Leaderboard_pressed():
 	$Transition/Background/AnimationPlayer.play("FadeLeaderboard")
