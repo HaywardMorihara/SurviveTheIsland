@@ -29,6 +29,8 @@ func _init():
 	OS.min_window_size = OS.window_size
 	OS.max_window_size = OS.get_screen_size()
 
+func _process(delta):
+	$Level/FallDeath.position.y -= 1
 
 func _notification(what):
 	if what == NOTIFICATION_WM_QUIT_REQUEST:

@@ -97,4 +97,6 @@ position = Vector2( 332, 1550 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDeath"]
 shape = SubResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="FallDeath"]
+
 [connection signal="body_entered" from="FallDeath" to="." method="_on_FallDeath_body_entered"]
