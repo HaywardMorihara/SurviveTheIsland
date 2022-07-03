@@ -402,6 +402,7 @@ shape = SubResource( 12 )
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = -10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
@@ -424,21 +425,22 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="Jump" type="TouchScreenButton" parent="UI"]
-position = Vector2( 74.0001, 115 )
+position = Vector2( 80.0001, 119 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 25 )
+passby_press = true
 action = "jump"
 visibility_mode = 1
 
 [node name="PlaceBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 621, 75 )
+position = Vector2( 621, 92 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 24 )
 action = "shoot"
 visibility_mode = 1
 
 [node name="RemoveBlock" type="TouchScreenButton" parent="UI"]
-position = Vector2( 524, 108 )
+position = Vector2( 529, 124 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 26 )
 action = "remove_block"
@@ -455,9 +457,9 @@ visibility_mode = 1
 
 [node name="Virtual joystick" parent="UI" instance=ExtResource( 27 )]
 margin_left = 601.0
-margin_top = -124.0
+margin_top = -114.0
 margin_right = 801.0
-margin_bottom = 76.0
+margin_bottom = 86.0
 clampzone_size = 25.0
 
 [node name="BlockCount" type="Control" parent="UI"]
