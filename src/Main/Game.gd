@@ -49,8 +49,8 @@ func _notification(what):
 			$Black.queue_free()
 	if what == NOTIFICATION_PARENTED:
 		# Have to wait until the child is instanced before setting this
-		eruption.set_level_bounds($Level.LIMIT_LEFT, $Level.LIMIT_TOP, $Level.LIMIT_RIGHT, $Level.LIMIT_BOTTOM)
-		
+		eruption.set_level_bounds($Level.LIMIT_LEFT, $Level.LIMIT_TOP, $Level.LIMIT_RIGHT, $Level.LIMIT_BOTTOM)		
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
@@ -77,10 +77,21 @@ func _unhandled_input(event):
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
 
 
+func _erupt():
+	var lava_pieces = eruption.start()
+	for lp in lava_pieces:
+		self.add_child(lp)
+		lp.connect("place_coin", $Level/Coins, "_on_LavaPiece_place_coin")
+		lp.connect("hit_player", self, "_on_LavaPiece_hit_player")
+	$Level/Player/Camera.add_trauma(0.3)
+
+
 func _on_WeatherTimer_timeout():
 	$CanvasModulate.visible = true
 	# https://gdscript.com/solutions/random-numbers/
-	incoming_storm = randi() % 2
+#	incoming_storm = randi() % 2
+	# Making this always EARTHQUAKE because I think it might be better if the lava is more consistent
+	incoming_storm = Storm.EARTHQUAKE
 	match incoming_storm:
 		Storm.ERUPTION:
 			$InterfaceLayer/WeatherAlert.alert(eruption.magnitude)
@@ -93,12 +104,7 @@ func _on_WeatherAlert_alert_finished():
 	
 	match incoming_storm:
 		Storm.ERUPTION:
-			var lava_pieces = eruption.start()
-			for lp in lava_pieces:
-				self.add_child(lp)
-				lp.connect("place_coin", $Level/Coins, "_on_LavaPiece_place_coin")
-				lp.connect("hit_player", self, "_on_LavaPiece_hit_player")
-			$Level/Player/Camera.add_trauma(0.3)
+			_erupt()
 		Storm.EARTHQUAKE:
 			$Level/Player/Camera.add_trauma(0.5 + (float(earthquake.magnitude) * 0.05))
 			$SFX/Rumble.play()
@@ -116,3 +122,11 @@ func _on_LavaPiece_hit_player():
 		Global.upgrades['FreeHitUsed'] = true
 	else:
 		animation_player.play("FadeGameOver")
+
+
+func _on_EruptionTimer_timeout():
+	_erupt()
+
+
+func _on_InitialEruptionDelay_timeout():
+	$EruptionTimer.start()

@@ -26,5 +26,6 @@ func start() -> Array:
 			var lava_piece = lava_piece_scene.instance()
 			lava_piece.position = Vector2(rand_range(limit_left, limit_right), rand_range(limit_top, limit_top - (STAGGER_BETWEEN_WAVES * wave_number)))
 			lava_pieces.append(lava_piece)
-	magnitude += 1 # Next time, the intensity will be greater
+	# Trying consistent magnitude and less destructive
+#	magnitude += 1 # Next time, the intensity will be greater
 	return lava_pieces
