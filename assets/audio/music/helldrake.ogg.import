@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/helldrake.ogg-319fa378f50908c5c1f9adf9a3e6a2ac.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/helldrake.ogg"
+dest_files=[ "res://.import/helldrake.ogg-319fa378f50908c5c1f9adf9a3e6a2ac.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
