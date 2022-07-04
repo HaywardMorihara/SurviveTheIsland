@@ -8,6 +8,8 @@ extends Node
 onready var _pause_menu = $InterfaceLayer/PauseMenu
 onready var animation_player = $Transition/Background/AnimationPlayer
 
+var block_shattering_scene = preload("res://src/Blocks/BlockShattering.tscn")
+
 var eruption = load("res://src/Weather/Eruption.gd").new()
 var earthquake = load("res://src/Weather/Earthquake.gd").new()
 
@@ -108,7 +110,11 @@ func _on_WeatherAlert_alert_finished():
 		Storm.EARTHQUAKE:
 			$Level/Player/Camera.add_trauma(0.5 + (float(earthquake.magnitude) * 0.05))
 			$SFX/Rumble.play()
-			earthquake.start($Level/TileMap, get_tree().get_nodes_in_group("blocks"))
+			var shatter_pos_list = earthquake.start($Level/TileMap, get_tree().get_nodes_in_group("blocks"))
+			for shatter_pos in shatter_pos_list:
+				var shatter = block_shattering_scene.instance()
+				shatter.position = shatter_pos
+				self.add_child(shatter)
 	
 	$WeatherTimer.start()
 
