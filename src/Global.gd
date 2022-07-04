@@ -19,7 +19,7 @@ func _ready() -> void:
 	SilentWolf.configure({
 		"api_key": api_key,
 		"game_id": "SurviveTheIsland",
-		"game_version": "0.0.1",
+		"game_version": "1.0.0",
 		"log_level": 2
 	})
 
