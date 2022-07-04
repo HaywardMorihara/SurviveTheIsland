@@ -29,7 +29,6 @@ func _ready():
 
 # Call to start or increase shaking. Pass it a value from [0,1]
 func add_trauma(amount):
-	print(amount)
 	trauma = min(trauma + amount, 1.0)
 
 
