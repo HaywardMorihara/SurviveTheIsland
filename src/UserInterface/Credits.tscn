@@ -117,7 +117,9 @@ Alarm SFX - https://opengameart.org/content/short-alarm
 
 Rumbling SFX - https://opengameart.org/content/rumble-fx
 
-Foom SFX - https://opengameart.org/content/spell-4-fire"
+Foom SFX - https://opengameart.org/content/spell-4-fire
+
+Block Break SFX - https://opengameart.org/content/foot-walking-step-sounds-on-stone-water-snow-wood-and-dirt"
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 show_behind_parent = true
