@@ -26,3 +26,7 @@ func _on_RigidBody2D_body_entered(body):
 	if randi() % coin_probability_denominator == 0:
 		emit_signal("place_coin", position)
 	self.queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	$MovingSFX.play()
