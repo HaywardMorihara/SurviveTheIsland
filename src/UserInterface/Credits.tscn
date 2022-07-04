@@ -115,7 +115,9 @@ Music - https://opengameart.org/content/helldrake
 
 Alarm SFX - https://opengameart.org/content/short-alarm
 
-Rumbling SFX - https://opengameart.org/content/rumble-fx"
+Rumbling SFX - https://opengameart.org/content/rumble-fx
+
+Foom SFX - https://opengameart.org/content/spell-4-fire"
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 show_behind_parent = true
