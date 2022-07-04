@@ -37,7 +37,7 @@ func _process(delta):
 	$Level/FallDeath.position.y -= 0.1
 	if lava_rise_counter == 0:
 		for i in range(-38, 37):
-			$Level/TileMap2.set_cell(i,($Level/FallDeath.position.y-1550)/32,0)
+			$Level/LavaTileMap.set_cell(i,($Level/FallDeath.position.y-1550)/32,0)
 		print($Level/FallDeath.position.y)
 	lava_rise_counter += 1
 
